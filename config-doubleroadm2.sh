@@ -25,9 +25,10 @@ echo "* Configuring ROADM"
 # talk to h2 via s1 !!
 curl "$r1/connect?node=r1&port1=1&port2=3&channels=1"
 curl "$r1/connect?node=r1&port1=2&port2=6&channels=2"
-# Connect t1 and t2 to r2 on channels 3 and 4
-curl "$r2/connect?node=r2&port1=1&port2=3&channels=3"
-curl "$r2/connect?node=r2&port1=2&port2=4&channels=4"
+curl "$r2/connect?node=r2&port1=1&port2=3&channels=1"
+curl "$r2/connect?node=r2&port1=2&port2=6&channels=2"
+
+
 
 echo "* Turning on terminals/transceivers"
 for tname in t1 t2 t3; do
