@@ -10,7 +10,8 @@ t1=$url; t2=$url; t3=$url; r1=$url; r2=$url;
 
 echo "* Configuring terminals in singleroadm.py network"
 for tname in t1 t2 t3; do
-    url=${!tname}
+#     url=${!tname}
+    eval "url=\$$tname"
     curl "$url/connect?node=$tname&ethPort=3&wdmPort=1&channel=1"
     curl "$url/connect?node=$tname&ethPort=4&wdmPort=2&channel=2"
 done
