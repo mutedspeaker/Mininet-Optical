@@ -10,7 +10,6 @@ t1=$url; t2=$url; t3=$url; r1=$url; r2=$url;
 
 echo "* Configuring terminals in singleroadm.py network"
 for tname in t1 t2 t3; do
-#     url=${!tname}
     eval "url=\$$tname"
     curl "$url/connect?node=$tname&ethPort=3&wdmPort=1&channel=1"
     curl "$url/connect?node=$tname&ethPort=4&wdmPort=2&channel=2"
@@ -29,17 +28,15 @@ curl "$r1/connect?node=r1&port1=2&port2=6&channels=2"
 curl "$r2/connect?node=r2&port1=1&port2=3&channels=1"
 curl "$r2/connect?node=r2&port1=2&port2=6&channels=2"
 
-
-
 echo "* Turning on terminals/transceivers"
 for tname in t1 t2 t3; do
-    url=${!tname}
+    eval "url=\$$tname"
     curl "$url/turn_on?node=$tname"
 done
 
 echo "* Monitoring signals at endpoints"
 for tname in t1 t2 t3; do
-    url=${!tname}
+    eval "url=\$$tname"
     echo "* $tname"
     curl "$url/monitor?monitor=$tname-monitor"
 done
