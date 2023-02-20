@@ -13,11 +13,48 @@ from subprocess import run
 from sys import argv
 
 # class SingleROADMTopo(Topo):
+#   def build(self):
+#       "Build single ROADM topology"
+#       # Packet network elements
+#       hosts = [self.addHost(h) for h in ('h1', 'h2', 'h3')]
+#       switches = [self.addSwitch(s)
+#                   for s in ('s1', 's2', 's3')]
+#       t1, t2, t3 = terminals = [
+#           self.addSwitch(
+#               t, cls=Terminal, transceivers=[('tx1',0*dBm,'C'), ('tx2',0*dBm,'C')],
+#               monitor_mode='in')
+#           for t in ('t1', 't2', 't3')]
+#       r1 = self.addSwitch('r1', cls=ROADM)
+#       # Ethernet links
+#       for h, s, t in zip(hosts, switches, terminals):
+#           self.addLink(h, s)
+#           self.addLink(s, t, port2=1)
+#       # WDM links
+#       boost = ('boost', {'target_gain': 3.0*dB})
+#       amp1 = ('amp1', {'target_gain': 25*.22*dB})
+#       amp2 = ('amp2', {'target_gain': 25*.22*dB})
+#       spans = [25*km, amp1, 25*km, amp2]
+#       self.addLink(r1, t1, cls=OpticalLink, port1=1, port2=2,
+#                    boost1=boost, spans=spans)
+#       self.addLink(r1, t1, cls=OpticalLink, port1=2, port2=3,
+#                    boost1=boost, spans=spans)
+#       self.addLink(r1, t2, cls=OpticalLink, port1=3, port2=2,
+#                    boost1=boost, spans=spans)
+#       self.addLink(r1, t2, cls=OpticalLink, port1=4, port2=3,
+#                    boost1=boost, spans=spans)
+#       self.addLink(r1, t3, cls=OpticalLink, port1=5, port2=2,
+#                    spans=[1.0*m])
+#       self.addLink(r1, t3, cls=OpticalLink, port1=6, port2=3,
+#                    spans=[1.0*m])
+
+
+# class DoubleROADMTopo(Topo):
 #     def build(self):
 #         hosts = [self.addHost(h) for h in ('h1', 'h2', 'h3')]
 #         switches = [self.addSwitch(s) for s in ('s1', 's2', 's3')]
 #         t1, t2, t3 = terminals = [self.addSwitch(t, cls=Terminal, transceivers=[('tx1', 0*dBm, 'C')], monitor_mode='in') for t in ('t1', 't2', 't3')]
 #         r1 = self.addSwitch('r1', cls=ROADM)
+#         r2 = self.addSwitch('r2', cls=ROADM)
 #         for h, s, t in zip(hosts, switches, terminals):
 #             self.addLink(h, s)
 #             self.addLink(s, t, port2=1)
@@ -27,13 +64,14 @@ from sys import argv
 #         spans = [25*km, amp1, 25*km, amp2]
 #         self.addLink(r1, t1, cls=OpticalLink, port1=1, port2=2, boost1=boost, spans=spans)
 #         self.addLink(r1, t2, cls=OpticalLink, port1=2, port2=2, boost1=boost, spans=spans)
-#         self.addLink(r1, t3, cls=OpticalLink, port1=3, port2=2, spans=[1.0*m])
+#         self.addLink(r2, t3, cls=OpticalLink, port1=1, port2=2, spans=[1.0*m])
+#         self.addLink(r1, r2, cls=OpticalLink, port1=3, port2=3, spans=[50*km])
 
 class DoubleROADMTopo(Topo):
     def build(self):
         hosts = [self.addHost(h) for h in ('h1', 'h2', 'h3')]
         switches = [self.addSwitch(s) for s in ('s1', 's2', 's3')]
-        t1, t2, t3 = terminals = [self.addSwitch(t, cls=Terminal, transceivers=[('tx1', 0*dBm, 'C')], monitor_mode='in') for t in ('t1', 't2', 't3')]
+        t1, t2, t3 = terminals = [self.addSwitch(t, cls=Terminal, transceivers=[('tx1', 0*dBm, 'C'), ('tx2', 0*dBm, 'C')], monitor_mode='in') for t in ('t1', 't2', 't3')]
         r1 = self.addSwitch('r1', cls=ROADM)
         r2 = self.addSwitch('r2', cls=ROADM)
         for h, s, t in zip(hosts, switches, terminals):
@@ -44,9 +82,11 @@ class DoubleROADMTopo(Topo):
         amp2 = ('amp2', {'target_gain': 25*.22*dB})
         spans = [25*km, amp1, 25*km, amp2]
         self.addLink(r1, t1, cls=OpticalLink, port1=1, port2=2, boost1=boost, spans=spans)
-        self.addLink(r1, t2, cls=OpticalLink, port1=2, port2=2, boost1=boost, spans=spans)
+        self.addLink(r1, t1, cls=OpticalLink, port1=2, port2=3, boost1=boost, spans=spans)
+        self.addLink(r1, t2, cls=OpticalLink, port1=3, port2=2, boost1=boost, spans=spans)
+        self.addLink(r1, t2, cls=OpticalLink, port1=4, port2=3, boost1=boost, spans=spans)
         self.addLink(r2, t3, cls=OpticalLink, port1=1, port2=2, spans=[1.0*m])
-        self.addLink(r1, r2, cls=OpticalLink, port1=3, port2=3, spans=[50*km])
+        self.addLink(r1, r2, cls=OpticalLink, port1=5, port2=5, spans=[50*km])
 
         
 def plotNet(net, outfile="singleroadm.png", directed=False, layout='circo', colorMap=None, linksPerPair=5):
@@ -92,6 +132,23 @@ def test(net):
     remove_script = join(testdir, 'remove-singleroadm.sh')
     run(remove_script)
     assert net.ping(hosts, timeout=.5) == 100
+    
+def test(net):
+    "Run config script and simple test"
+
+    # Run the config script to configure the network
+    info( '*** Configuring network\n')
+    run('python3 config.py', shell=True)
+
+    # Check connectivity between h1 and h2
+    h1, h2 = net.get('h1', 'h2')
+    info( f'*** Testing connectivity: {h1.IP()} -> {h2.IP()}\n')
+    result = h1.cmd(f'ping -c5 {h2.IP()}')
+    if '5 received' in result:
+        info( 'Ping test: passed\n')
+    else:
+        info( 'Ping test: failed\n')
+
 
 if __name__ == '__main__':
 
