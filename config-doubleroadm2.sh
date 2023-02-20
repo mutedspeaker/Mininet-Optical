@@ -3,7 +3,7 @@
 set -e  # exit script on error
 
 # URL for REST server
-url="localhost:8080"; t1=$url; t2=$url; t3=$url; r1=$url
+url="localhost:8080"; t1=$url; t2=$url; t3=$url; r1=$url; r2=$url;
 
 echo "* Configuring terminals in singleroadm.py network"
 for tname in t1 t2 t3; do
