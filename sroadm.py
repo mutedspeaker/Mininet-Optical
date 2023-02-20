@@ -74,13 +74,6 @@ def test(net):
     run(remove_script)
     assert net.ping(hosts, timeout=.5) == 100
 
-def main():
-    topo = SingleROADMTopo()
-    net = Mininet(topo=topo, switch=OVSBridge)
-    net.start()
-    net.pingAll()
-    net.stop()
-
 if __name__ == '__main__':
 
     cleanup()
