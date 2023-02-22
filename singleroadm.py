@@ -67,7 +67,7 @@ class SingleROADMTopo(Topo):
         self.addLink(r1, t3, cls=OpticalLink, port1=5, port2=3,
                      spans=[1.0*m])
         # Additional transceivers
-#         t1.addTransceiver(Transceiver('tx3', 0*dBm, 'E'), port=3)
+        t1.addTransceiver(Transceiver('tx3', 0*dBm, 'E'), port=3)
 
 
 # Debugging: Plot network graph
