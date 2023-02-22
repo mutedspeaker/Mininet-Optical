@@ -40,7 +40,7 @@ class SingleROADMTopo(Topo):
                     for s in ('s1', 's2', 's3')]
         t1, t2, t3 = terminals = [
             self.addSwitch(
-                t, cls=Terminal, transceivers=[('tx1',0*dBm,'C')],
+                t, cls=Terminal, transceivers=[('tx1',0*dBm,'C'), ('tx2',0*dBm,'C')],
                 monitor_mode='in')
             for t in ('t1', 't2', 't3')]
         r1 = self.addSwitch('r1', cls=ROADM)
@@ -55,15 +55,15 @@ class SingleROADMTopo(Topo):
         spans = [25*km, amp1, 25*km, amp2]
         self.addLink(r1, t1, cls=OpticalLink, port1=1, port2=2,
                      boost1=boost, spans=spans)
+        self.addLink(r1, t1, cls=OpticalLink, port1=3, port2=3,
+                     boost1=boost, spans=spans)
         self.addLink(r1, t2, cls=OpticalLink, port1=2, port2=2,
+                     boost1=boost, spans=spans)
+        self.addLink(r1, t2, cls=OpticalLink, port1=4, port2=3,
                      boost1=boost, spans=spans)
         self.addLink(r1, t3, cls=OpticalLink, port1=3, port2=2,
                      spans=[1.0*m])
-        self.addLink(t1, r1, cls=OpticalLink, port1=2, port2=1,
-                     boost1=boost, spans=spans)
-        self.addLink(t2, r1, cls=OpticalLink, port1=2, port2=2,
-                     boost1=boost, spans=spans)
-        self.addLink(t3, r1, cls=OpticalLink, port1=2, port2=3,
+        self.addLink(r1, t3, cls=OpticalLink, port1=5, port2=3,
                      spans=[1.0*m])
 
 
