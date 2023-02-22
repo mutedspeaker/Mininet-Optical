@@ -55,15 +55,15 @@ class SingleROADMTopo(Topo):
         spans = [25*km, amp1, 25*km, amp2]
         self.addLink(r1, t1, cls=OpticalLink, port1=1, port2=2,
                      boost1=boost, spans=spans)
-        self.addLink(r1, t1, cls=OpticalLink, port1=3, port2=3,
+        self.addLink(r1, t1, cls=OpticalLink, port1=4, port2=3,
                      boost1=boost, spans=spans)
         self.addLink(r1, t2, cls=OpticalLink, port1=2, port2=2,
                      boost1=boost, spans=spans)
-        self.addLink(r1, t2, cls=OpticalLink, port1=4, port2=3,
+        self.addLink(r1, t2, cls=OpticalLink, port1=5, port2=3,
                      boost1=boost, spans=spans)
         self.addLink(r1, t3, cls=OpticalLink, port1=3, port2=2,
                      spans=[1.0*m])
-        self.addLink(r1, t3, cls=OpticalLink, port1=5, port2=3,
+        self.addLink(r1, t3, cls=OpticalLink, port1=6, port2=3,
                      spans=[1.0*m])
 
 
