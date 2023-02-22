@@ -48,7 +48,7 @@ class SingleROADMTopo(Topo):
         for h, s, t in zip(hosts, switches, terminals):
             self.addLink(h, s)
             self.addLink(s, t, port2=1)
-            self.addLink(t, r1, port2=4)
+            self.addLink(t, s, port2=4)
         # WDM links
         boost = ('boost', {'target_gain': 3.0*dB})
         amp1 = ('amp1', {'target_gain': 25*.22*dB})
