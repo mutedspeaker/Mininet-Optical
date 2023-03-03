@@ -42,15 +42,16 @@ class SingleROADMTopo(Topo):
         r2 = self.addSwitch('r2', cls=ROADM)
         r3 = self.addSwitch('r3', cls=ROADM)
 #         # Ethernet links
-#         for h, s, t in zip(hosts, switches, terminals):
-#             self.addLink(h, s)
-#             self.addLink(s, t)
-        self.addLink(h1, s1)
-        self.addLink(s1, t1, port2=1)
-#         self.addLink(s1, t1, port2=4)
-        self.addLink(h2, s2)
-        self.addLink(s2, t4, port2=1)
-#         self.addLink(s2, t4, port2=4)
+        for h, s, t in zip(hosts, switches, terminals):
+            self.addLink(h, s)
+            self.addLink(s, t, port2=1)
+            self.addLink(s, t, port2=4)
+#         self.addLink(h1, s1)
+#         self.addLink(s1, t1, port2=1)
+# #         self.addLink(s1, t1, port2=4)
+#         self.addLink(h2, s2)
+#         self.addLink(s2, t4, port2=1)
+# #         self.addLink(s2, t4, port2=4)
         # WDM links
         boost = ('boost', {'target_gain': 3.0*dB})
         amp1 = ('amp1', {'target_gain': 25*.22*dB})
