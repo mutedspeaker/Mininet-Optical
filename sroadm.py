@@ -30,8 +30,8 @@ class SingleROADMTopo(Topo):
     def build(self):
         "Build multi ROADM topology"
         # Packet network elements
-        hosts = [self.addHost(h) for h in ('h1', 'h2')]
-        switches = [self.addSwitch(s)
+        h1, h2 = hosts = [self.addHost(h) for h in ('h1', 'h2')]
+        s1, s2 = switches = [self.addSwitch(s)
                     for s in ('s1', 's2')]
         t1, t2, t3, t4 = terminals = [
             self.addSwitch(
