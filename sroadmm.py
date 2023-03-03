@@ -2,11 +2,9 @@
 
 """
 singleroadm.py:
-
 Simple optical network with three terminals connected to a
 single ROADM in a "Y" topology. H1 can talk to either H2
 or H3, depending on how the ROADM is configured.
-
 """
 
 from mnoptical.dataplane import (Terminal, ROADM, OpticalLink,
@@ -65,7 +63,7 @@ class SingleROADMTopo(Topo):
                      boost1=boost, spans=spans)
         self.addLink(r1, t2, cls=OpticalLink, port1=3, port2=3,
                      boost1=boost, spans=spans)
-        
+
         self.addLink(r2, t2, cls=OpticalLink, port1=2, port2=5,
                      boost1=boost, spans=spans)
         self.addLink(r2, t2, cls=OpticalLink, port1=3, port2=6,
@@ -74,7 +72,7 @@ class SingleROADMTopo(Topo):
                      boost1=boost, spans=spans)
         self.addLink(r2, t3, cls=OpticalLink, port1=4, port2=3,
                      boost1=boost, spans=spans)
-        
+
         self.addLink(r3, t3, cls=OpticalLink, port1=2, port2=5,
                      boost1=boost, spans=spans)
         self.addLink(r3, t3, cls=OpticalLink, port1=3, port2=6,
@@ -83,11 +81,15 @@ class SingleROADMTopo(Topo):
                      boost1=boost, spans=spans)
         self.addLink(r3, t4, cls=OpticalLink, port1=4, port2=3,
                      boost1=boost, spans=spans)
-        
+
 
         # Connect all pairs of terminals
         self.addLink(t1, t2)
+<<<<<<< HEAD:sroadm.py
        # self.addLink(t2, t3)
+=======
+#         self.addLink(t2, t3)
+>>>>>>> main:sroadmm.py
         self.addLink(t3, t4)
 # Debugging: Plot network graph
 def plotNet(net, outfile="singleroadm.png", directed=False, layout='circo',
