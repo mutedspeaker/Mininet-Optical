@@ -86,9 +86,9 @@ class SingleROADMTopo(Topo):
         
 
         # Connect all pairs of terminals
-#         self.addLink(t1, t2)
-#         self.addLink(t2, t3)
-#         self.addLink(t3, t4)
+        self.addLink(t1, t2)
+       # self.addLink(t2, t3)
+        self.addLink(t3, t4)
 # Debugging: Plot network graph
 def plotNet(net, outfile="singleroadm.png", directed=False, layout='circo',
             colorMap=None, linksPerPair=5):
