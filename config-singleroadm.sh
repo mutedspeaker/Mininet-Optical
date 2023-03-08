@@ -23,6 +23,12 @@ $curl "$r1/reset?node=r1"
 
 echo "* Configuring ROADM to forward ch1 from t1 to t2"
 $curl "$r1/connect?node=r1&port1=1&port2=2&channels=1"
+$curl "$r1/connect?node=r1&port1=4&port2=3&channels=1"
+$curl "$r1/connect?node=r1&port1=2&port2=2&channels=1"
+$curl "$r1/connect?node=r1&port1=5&port2=3&channels=1"
+$curl "$r1/connect?node=r1&port1=3&port2=2&channels=1"
+$curl "$r1/connect?node=r1&port1=6&port2=3&channels=1"
+
 
 echo "* Turning on terminals/transceivers"
 
