@@ -14,10 +14,16 @@ $curl "$t2/connect?node=t2&ethPort=1&wdmPort=2&channel=1"
 $curl "$t3/connect?node=t3&ethPort=1&wdmPort=2&channel=1"
 $curl "$t4/connect?node=t4&ethPort=1&wdmPort=2&channel=1"
 
+
+echo "* Resetting ROADM"
+$curl "$r1/reset?node=r1"
+$curl "$r2/reset?node=r2"
+$curl "$r3/reset?node=r3"
+
 echo "* Configuring ROADM"
 $curl "$r1/connect?node=r1&port1=1&port2=2&channels=1"
-$curl "$r2/connect?node=r2&port1=1&port2=2&channels=1"
-$curl "$r3/connect?node=r3&port1=1&port2=2&channels=1"
+$curl "$r2/connect?node=r2&port1=1&port2=2&channels=45"
+$curl "$r3/connect?node=r3&port1=1&port2=2&channels=90"
 
 echo "* Monitoring signals at endpoints"
 for tname in t1 t2 t3 t4; do
@@ -25,8 +31,6 @@ for tname in t1 t2 t3 t4; do
     $curl "$url/monitor?monitor=$tname-monitor"
 done
 
-echo "* Resetting ROADM"
-$curl "$r1/reset?node=r1"
 
 echo "* Configuring ROADM to forward ch1 from t1 to r2"
 $curl "$r1/connect?node=r1&port1=3&port2=1&channels=1"
