@@ -26,9 +26,9 @@ $curl "$r3/reset?node=r3"
 
 echo "* Configuring ROADM nodes"
 $curl "$r1/connect?node=r1&port1=1&port2=2&channels=1"
-$curl "$r2/connect?node=r2&port1=1&port2=2&channels=1"
-$curl "$r2/connect?node=r2&port1=3&port2=4&channels=1"
-$curl "$r3/connect?node=r3&port1=1&port2=2&channels=1"
+$curl "$r2/connect?node=r2&port1=1&port2=2&channels=40"
+$curl "$r2/connect?node=r2&port1=3&port2=4&channels=50"
+$curl "$r3/connect?node=r3&port1=1&port2=2&channels=90"
 
 echo "* Turning on terminals/transceivers"
 $curl "$t1/turn_on?node=t1"
