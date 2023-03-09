@@ -55,31 +55,34 @@ class SingleROADMTopo(Topo):
         amp1 = ('amp1', {'target_gain': 25*.22*dB})
         amp2 = ('amp2', {'target_gain': 25*.22*dB})
         spans = [25*km, amp1, 25*km, amp2]
-        self.addLink(r1, t1, cls=OpticalLink, port1=1, port2=2,
+        self.addLink(r1, t1, cls=OpticalLink, port1=10, port2=10,
                      boost1=boost, spans=spans)
-        self.addLink(r1, t1, cls=OpticalLink, port1=4, port2=3,
+        self.addLink(r1, t1, cls=OpticalLink, port1=11, port2=11,
                      boost1=boost, spans=spans)
-        self.addLink(r1, t2, cls=OpticalLink, port1=2, port2=2,
+                     
+        self.addLink(r1, t2, cls=OpticalLink, port1=10, port2=10,
                      boost1=boost, spans=spans)
-        self.addLink(r1, t2, cls=OpticalLink, port1=3, port2=3,
-                     boost1=boost, spans=spans)
-
-        self.addLink(r2, t2, cls=OpticalLink, port1=2, port2=5,
-                     boost1=boost, spans=spans)
-        self.addLink(r2, t2, cls=OpticalLink, port1=3, port2=6,
-                     boost1=boost, spans=spans)
-        self.addLink(r2, t3, cls=OpticalLink, port1=1, port2=2,
-                     boost1=boost, spans=spans)
-        self.addLink(r2, t3, cls=OpticalLink, port1=4, port2=3,
+        self.addLink(r1, t2, cls=OpticalLink, port1=11, port2=11,
                      boost1=boost, spans=spans)
 
-        self.addLink(r3, t3, cls=OpticalLink, port1=2, port2=5,
+        self.addLink(r2, t2, cls=OpticalLink, port1=20, port2=20,
                      boost1=boost, spans=spans)
-        self.addLink(r3, t3, cls=OpticalLink, port1=3, port2=6,
+        self.addLink(r2, t2, cls=OpticalLink, port1=21, port2=21,
                      boost1=boost, spans=spans)
-        self.addLink(r3, t4, cls=OpticalLink, port1=1, port2=2,
+                     
+        self.addLink(r2, t3, cls=OpticalLink, port1=10, port2=10,
                      boost1=boost, spans=spans)
-        self.addLink(r3, t4, cls=OpticalLink, port1=4, port2=3,
+        self.addLink(r2, t3, cls=OpticalLink, port1=11, port2=11,
+                     boost1=boost, spans=spans)
+
+        self.addLink(r3, t3, cls=OpticalLink, port1=20, port2=20,
+                     boost1=boost, spans=spans)
+        self.addLink(r3, t3, cls=OpticalLink, port1=21, port2=21,
+                     boost1=boost, spans=spans)
+                     
+        self.addLink(r3, t4, cls=OpticalLink, port1=10, port2=10,
+                     boost1=boost, spans=spans)
+        self.addLink(r3, t4, cls=OpticalLink, port1=11, port2=11,
                      boost1=boost, spans=spans)
 
 
@@ -88,7 +91,7 @@ class SingleROADMTopo(Topo):
        # self.addLink(t2, t3)
         self.addLink(t3, t4)
 # Debugging: Plot network graph
-def plotNet(net, outfile="singleroadm.png", directed=False, layout='circo',
+def plotNet(net, outfile="gConfigThreeRoadms.png", directed=False, layout='circo',
             colorMap=None, linksPerPair=5):
     """Plot network graph to outfile
        linksPerPair: max # of links between a pair of nodes to plot, or

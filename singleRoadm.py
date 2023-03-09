@@ -54,19 +54,6 @@ class SingleROADMTopo(Topo):
         amp1 = ('amp1', {'target_gain': 25*.22*dB})
         amp2 = ('amp2', {'target_gain': 25*.22*dB})
         spans = [25*km, amp1, 25*km, amp2]
-        '''
-        self.addLink(r1, t1, cls=OpticalLink, port1=2, port2=2,
-                     boost1=boost, spans=spans)
-        self.addLink(r1, t1, cls=OpticalLink, port1=3, port2=3,
-                     boost1=boost, spans=spans)
-        self.addLink(r1, t2, cls=OpticalLink, port1=5, port2=5,
-                     boost1=boost, spans=spans)
-        self.addLink(r1, t2, cls=OpticalLink, port1=6, port2=6,
-                     boost1=boost, spans=spans)
-        self.addLink(r1, t3, cls=OpticalLink, port1=7, port2=7,
-                     spans=[1.0*m])
-        self.addLink(r1, t3, cls=OpticalLink, port1=, port2=8,
-                     spans=[1.0*m])'''
         
         self.addLink(r1, t1, cls=OpticalLink, port1=1, port2=2,
                      boost1=boost, spans=spans)
