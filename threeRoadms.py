@@ -46,43 +46,41 @@ class SingleROADMTopo(Topo):
 #             self.addLink(s, t, port2=4)
         self.addLink(h1, s1)
         self.addLink(s1, t1, port2=1)
-        self.addLink(s1, t1, port2=4)
         self.addLink(h2, s2)
         self.addLink(s2, t4, port2=1)
-        self.addLink(s2, t4, port2=4)
         # WDM links
         boost = ('boost', {'target_gain': 3.0*dB})
         amp1 = ('amp1', {'target_gain': 25*.22*dB})
         amp2 = ('amp2', {'target_gain': 25*.22*dB})
         spans = [25*km, amp1, 25*km, amp2]
-        self.addLink(r1, t1, cls=OpticalLink, port1=10, port2=10,
+        self.addLink(r1, t1, cls=OpticalLink, port1=13, port2=10,
                      boost1=boost, spans=spans)
-        self.addLink(r1, t1, cls=OpticalLink, port1=11, port2=11,
+        self.addLink(r1, t1, cls=OpticalLink, port1=14, port2=11,
                      boost1=boost, spans=spans)
                      
-        self.addLink(r1, t2, cls=OpticalLink, port1=10, port2=10,
+        self.addLink(r1, t2, cls=OpticalLink, port1=23, port2=20,
                      boost1=boost, spans=spans)
-        self.addLink(r1, t2, cls=OpticalLink, port1=11, port2=11,
+        self.addLink(r1, t2, cls=OpticalLink, port1=24, port2=21,
                      boost1=boost, spans=spans)
 
-        self.addLink(r2, t2, cls=OpticalLink, port1=20, port2=20,
+        self.addLink(r2, t2, cls=OpticalLink, port1=33, port2=30,
                      boost1=boost, spans=spans)
-        self.addLink(r2, t2, cls=OpticalLink, port1=21, port2=21,
+        self.addLink(r2, t2, cls=OpticalLink, port1=34, port2=31,
                      boost1=boost, spans=spans)
                      
-        self.addLink(r2, t3, cls=OpticalLink, port1=10, port2=10,
+        self.addLink(r2, t3, cls=OpticalLink, port1=43, port2=40,
                      boost1=boost, spans=spans)
-        self.addLink(r2, t3, cls=OpticalLink, port1=11, port2=11,
+        self.addLink(r2, t3, cls=OpticalLink, port1=44, port2=41,
                      boost1=boost, spans=spans)
 
-        self.addLink(r3, t3, cls=OpticalLink, port1=20, port2=20,
+        self.addLink(r3, t3, cls=OpticalLink, port1=53, port2=50,
                      boost1=boost, spans=spans)
-        self.addLink(r3, t3, cls=OpticalLink, port1=21, port2=21,
+        self.addLink(r3, t3, cls=OpticalLink, port1=54, port2=51,
                      boost1=boost, spans=spans)
                      
-        self.addLink(r3, t4, cls=OpticalLink, port1=10, port2=10,
+        self.addLink(r3, t4, cls=OpticalLink, port1=63, port2=60,
                      boost1=boost, spans=spans)
-        self.addLink(r3, t4, cls=OpticalLink, port1=11, port2=11,
+        self.addLink(r3, t4, cls=OpticalLink, port1=64, port2=61,
                      boost1=boost, spans=spans)
 
 
