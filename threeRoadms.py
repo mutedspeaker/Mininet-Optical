@@ -83,11 +83,6 @@ class SingleROADMTopo(Topo):
         self.addLink(r3, t4, cls=OpticalLink, port1=64, port2=61,
                      boost1=boost, spans=spans)
 
-
-        # Connect all pairs of terminals
-        self.addLink(t1, t2)
-       # self.addLink(t2, t3)
-        self.addLink(t3, t4)
 # Debugging: Plot network graph
 def plotNet(net, outfile="gConfigThreeRoadms.png", directed=False, layout='circo',
             colorMap=None, linksPerPair=5):

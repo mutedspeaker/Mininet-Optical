@@ -12,18 +12,18 @@ echo "* Configuring terminals in threeRoadms.py network"
 $curl "$t1/connect?node=t1&ethPort=1&wdmPort=10&channel=1"
 $curl "$t1/connect?node=t1&ethPort=1&wdmPort=11&channel=1"
 
-$curl "$t2/connect?node=t2&ethPort=2&wdmPort=20&channel=40"
-$curl "$t2/connect?node=t2&ethPort=2&wdmPort=21&channel=40"
-$curl "$t2/connect?node=t2&ethPort=2&wdmPort=30&channel=50"
-$curl "$t2/connect?node=t2&ethPort=2&wdmPort=31&channel=50"
+$curl "$t2/connect?node=t2&ethPort=1&wdmPort=20&channel=40"
+$curl "$t2/connect?node=t2&ethPort=1&wdmPort=21&channel=40"
+$curl "$t2/connect?node=t2&ethPort=1&wdmPort=30&channel=50"
+$curl "$t2/connect?node=t2&ethPort=1&wdmPort=31&channel=50"
 
-$curl "$t3/connect?node=t3&ethPort=3&wdmPort=40&channel=60"
-$curl "$t3/connect?node=t3&ethPort=3&wdmPort=41&channel=60"
-$curl "$t3/connect?node=t3&ethPort=3&wdmPort=50&channel=70"
-$curl "$t3/connect?node=t3&ethPort=3&wdmPort=51&channel=70"
+$curl "$t3/connect?node=t3&ethPort=1&wdmPort=40&channel=60"
+$curl "$t3/connect?node=t3&ethPort=1&wdmPort=41&channel=60"
+$curl "$t3/connect?node=t3&ethPort=1&wdmPort=50&channel=70"
+$curl "$t3/connect?node=t3&ethPort=1&wdmPort=51&channel=70"
 
-$curl "$t4/connect?node=t3&ethPort=4&wdmPort=60&channel=90"
-$curl "$t4/connect?node=t3&ethPort=4&wdmPort=61&channel=90"
+$curl "$t4/connect?node=t3&ethPort=1&wdmPort=60&channel=90"
+$curl "$t4/connect?node=t3&ethPort=1&wdmPort=61&channel=90"
 
 echo "* Monitoring signals at endpoints"
 for tname in t1 t2 t3 t4; do
