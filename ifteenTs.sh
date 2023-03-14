@@ -33,20 +33,41 @@ echo "* Monitoring signals at endpoints"
 
 
 echo "* Configuring ROADM to forward ch1 from t1 to t2"
-# r1 and t1
+# r1 and t1 to t5
 $curl "$r1/connect?node=r1&port1=2&port2=2&channels=41"
+$curl "$r1/connect?node=r1&port1=3&port2=2&channels=41"
+$curl "$r1/connect?node=r1&port1=4&port2=2&channels=41"
+$curl "$r1/connect?node=r1&port1=5&port2=2&channels=41"
+$curl "$r1/connect?node=r1&port1=6&port2=2&channels=41"
 
-# r1 and r2 ig
-$curl "$r1/connect?node=r1&port1=3&port2=3&channels=40"
-$curl "$r2/connect?node=r2&port1=30&port2=30&channels=40"
+# r2 and t6 to t10
+$curl "$r1/connect?node=r1&port1=7&port2=2&channels=41"
+$curl "$r1/connect?node=r1&port1=8&port2=2&channels=41"
+$curl "$r1/connect?node=r1&port1=9&port2=2&channels=41"
+$curl "$r1/connect?node=r1&port1=10&port2=2&channels=41"
+$curl "$r1/connect?node=r1&port1=11&port2=2&channels=41"
+
+# r3 and t11 to 15
+$curl "$r1/connect?node=r1&port1=12&port2=2&channels=41"
+$curl "$r1/connect?node=r1&port1=13&port2=2&channels=41"
+$curl "$r1/connect?node=r1&port1=14&port2=2&channels=41"
+$curl "$r1/connect?node=r1&port1=15&port2=2&channels=41"
+$curl "$r1/connect?node=r1&port1=16&port2=2&channels=41"
+
+# r1 and r2 
+$curl "$r1/connect?node=r1&port1=30&port2=30&channels=40"
+$curl "$r2/connect?node=r2&port1=31&port2=31&channels=40"
 # r2 and r3
-$curl "$r2/connect?node=r2&port1=4&port2=4&channels=50"
 $curl "$r2/connect?node=r2&port1=40&port2=40&channels=50"
+$curl "$r2/connect?node=r2&port1=41&port2=41&channels=50"
 # r2 and t2
-$curl "$r2/connect?node=r2&port1=7&port2=7&channels=45"
 
-#r3 and t3
-$curl "$r3/connect?node=r3&port1=5&port2=5&channels=49"
+
+
+
+
+
+
 
 echo "* Turning on terminals/transceivers"
 
