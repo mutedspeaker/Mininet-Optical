@@ -52,11 +52,11 @@ class SingleROADMTopo(Topo):
 
         # Connections between routers and terminals
         for i in range(1, 6):
-        	self.addLink(r1, locals()['t'+str(i)], cls=OpticalLink, port1=i+1, port2=2, boost1=boost, spans=spans)
+        	self.addLink(r1, locals()['t'+str(i)], cls=OpticalLink, port1=i+2, port2=i+2, boost1=boost, spans=spans)
         for i in range(6, 11):
-               	self.addLink(r2, locals()['t'+str(i)], cls=OpticalLink, port1=i-4, port2=2, boost1=boost, spans=spans)
+               	self.addLink(r2, locals()['t'+str(i)], cls=OpticalLink, port1=i+2, port2=i+2, boost1=boost, spans=spans)
         for i in range(11, 16):
-                self.addLink(r3, locals()['t'+str(i)], cls=OpticalLink, port1=i-9, port2=2, boost1=boost, spans=spans)
+                self.addLink(r3, locals()['t'+str(i)], cls=OpticalLink, port1=i+2, port2=i+2, boost1=boost, spans=spans)
 
 	# Adding links between r1 and r2
         self.addLink(r1, r2, cls=OpticalLink, port1=30, port2=30, boost1=boost, spans=spans)
