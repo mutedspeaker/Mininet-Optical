@@ -20,13 +20,16 @@ from mininet.clean import cleanup
 from os.path import dirname, realpath, join
 from subprocess import run
 from sys import argv
+'''
 
-class SingleROADMTopo(Topo):
  h1 - s1 - (t1,t2,t3,t4,t5) - r1 -- r2 -- r3 -- (t10,t11,t12,t13,t14,15) - s3 - h3
 				    ||
 		             (t6,t7,t8,t9,t10)
 				    ||
 				    h2
+'''
+				    
+class SingleROADMTopo(Topo):
     def build(self):
         h1, h2, h3= [self.addHost(f'h{i}') for i in range(1, 4)]
         s1, s2, s3 = [self.addSwitch(f's{i}') for i in range(1, 4)]
@@ -42,10 +45,10 @@ class SingleROADMTopo(Topo):
         amp2 = ('amp2', {'target_gain': 25*.22*dB})
         spans = [25*km, amp1, 25*km, amp2]
 	 # Add links
-	for src, dst in [(h1, s1), (h2, s2), (h3, s3)]:
-	self.addLink(src, dst)
-	for src, dst in [(s1, t1),(s1, t2),(s1, t3),(s1, t4),(s1, t5), (s2, t6),(s2, t7),(s2, t8),(s2, t9),(s2, t10), (s3, t11), (s3, t12), (s3, t13), (s3, t14), (s3, t15)]:
-	self.addLink(src, dst, port2=1)
+        for src, dst in [(h1, s1), (h2, s2), (h3, s3)]:
+	        self.addLink(src, dst)
+        for src, dst in [(s1, t1),(s1, t2),(s1, t3),(s1, t4),(s1, t5), (s2, t6),(s2, t7),(s2, t8),(s2, t9),(s2, t10), (s3, t11), (s3, t12), (s3, t13), (s3, t14), (s3, t15)]:
+	        self.addLink(src, dst, port2=1)
 
         # Connections between routers and terminals
         for i in range(1, 6):
