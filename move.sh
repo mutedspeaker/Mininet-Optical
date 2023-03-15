@@ -1,135 +1,77 @@
-#!/bin/bash -x
-
-set -e  # exit script on error
+import subprocess
 
 # URL for REST server
-url="localhost:8080"; t1=$url; t2=$url; t3=$url; t4=$url; t5=$url; t6=$url; t7=$url; t8=$url; t9=$url; t10=$url; t11=$url; t12=$url; t13=$url; t14=$url; t15=$url; r1=$url; r2=$url; r3=$url
+url = "localhost:8080"
+t = [url]*15
+r = [url]*3
 
-curl="curl -s"
+curl = "curl -s"
 
-echo "* Configuring terminals in threeRoadms.py network"
-# $curl "$t1/connect?node=t1&ethPort=3&wdmPort=2&channel=41"
-# $curl "$t2/connect?node=t2&ethPort=7&wdmPort=2&channel=45"
-# $curl "$t3/connect?node=t3&ethPort=5&wdmPort=2&channel=49"
-# $curl "$t4/connect?node=t4&ethPort=6&wdmPort=2&channel=50"
-# $curl "$t5/connect?node=t5&ethPort=7&wdmPort=2&channel=51"
-# $curl "$t6/connect?node=t6&ethPort=3&wdmPort=3&channel=42"
-# $curl "$t7/connect?node=t7&ethPort=4&wdmPort=3&channel=43"
-# $curl "$t8/connect?node=t8&ethPort=5&wdmPort=3&channel=44"
-# $curl "$t9/connect?node=t9&ethPort=6&wdmPort=3&channel=52"
-# $curl "$t10/connect?node=t10&ethPort=7&wdmPort=3&channel=53"
-# $curl "$t11/connect?node=t11&ethPort=8&wdmPort=4&channel=54"
-# $curl "$t12/connect?node=t12&ethPort=9&wdmPort=4&channel=55"
-# $curl "$t13/connect?node=t13&ethPort=10&wdmPort=4&channel=56"
-# $curl "$t14/connect?node=t14&ethPort=11&wdmPort=4&channel=57"
-# $curl "$t15/connect?node=t15&ethPort=12&wdmPort=4&channel=58"
-$curl "$t1/connect?node=t1&ethPort=2&wdmPort=3&channel=6"
-$curl "$t2/connect?node=t2&ethPort=3&wdmPort=4&channel=12"
-$curl "$t3/connect?node=t3&ethPort=4&wdmPort=5&channel=18"
-$curl "$t4/connect?node=t4&ethPort=5&wdmPort=6&channel=24"
-$curl "$t5/connect?node=t5&ethPort=1&wdmPort=7&channel=30"
-$curl "$t6/connect?node=t6&ethPort=2&wdmPort=8&channel=36"
-$curl "$t7/connect?node=t7&ethPort=3&wdmPort=9&channel=42"
-$curl "$t8/connect?node=t8&ethPort=4&wdmPort=10&channel=48"
-$curl "$t9/connect?node=t9&ethPort=5&wdmPort=11&channel=54"
-$curl "$t10/connect?node=t10&ethPort=1&wdmPort=12&channel=60"
-$curl "$t11/connect?node=t11&ethPort=2&wdmPort=13&channel=66"
-$curl "$t12/connect?node=t12&ethPort=3&wdmPort=14&channel=72"
-$curl "$t13/connect?node=t13&ethPort=4&wdmPort=15&channel=78"
-$curl "$t14/connect?node=t14&ethPort=5&wdmPort=16&channel=84"
-$curl "$t15/connect?node=t15&ethPort=1&wdmPort=17&channel=90"
+print("* Configuring terminals in threeRoadms.py network")
+# t1
+subprocess.run([curl, f"{t[0]}/connect?node=t1&ethPort=2&wdmPort=3&channel=6"], check=True)
+# t2
+subprocess.run([curl, f"{t[1]}/connect?node=t2&ethPort=3&wdmPort=4&channel=12"], check=True)
+# t3
+subprocess.run([curl, f"{t[2]}/connect?node=t3&ethPort=4&wdmPort=5&channel=18"], check=True)
+# t4
+subprocess.run([curl, f"{t[3]}/connect?node=t4&ethPort=5&wdmPort=6&channel=24"], check=True)
+# t5
+subprocess.run([curl, f"{t[4]}/connect?node=t5&ethPort=1&wdmPort=7&channel=30"], check=True)
+# t6
+subprocess.run([curl, f"{t[5]}/connect?node=t6&ethPort=2&wdmPort=8&channel=36"], check=True)
+# t7
+subprocess.run([curl, f"{t[6]}/connect?node=t7&ethPort=3&wdmPort=9&channel=42"], check=True)
+# t8
+subprocess.run([curl, f"{t[7]}/connect?node=t8&ethPort=4&wdmPort=10&channel=48"], check=True)
+# t9
+subprocess.run([curl, f"{t[8]}/connect?node=t9&ethPort=5&wdmPort=11&channel=54"], check=True)
+# t10
+subprocess.run([curl, f"{t[9]}/connect?node=t10&ethPort=1&wdmPort=12&channel=60"], check=True)
+# t11
+subprocess.run([curl, f"{t[10]}/connect?node=t11&ethPort=2&wdmPort=13&channel=66"], check=True)
+# t12
+subprocess.run([curl, f"{t[11]}/connect?node=t12&ethPort=3&wdmPort=14&channel=72"], check=True)
+# t13
+subprocess.run([curl, f"{t[12]}/connect?node=t13&ethPort=4&wdmPort=15&channel=78"], check=True)
+# t14
+subprocess.run([curl, f"{t[13]}/connect?node=t14&ethPort=5&wdmPort=16&channel=84"], check=True)
+# t15
+subprocess.run([curl, f"{t[14]}/connect?node=t15&ethPort=1&wdmPort=17&channel=90"], check=True)
 
-echo "* Resetting ROADM"
-$curl "$r1/reset?node=r1"
-$curl "$r2/reset?node=r2"
-$curl "$r3/reset?node=r3"
+print("* Resetting ROADM")
+subprocess.run([curl, f"{r[0]}/reset?node=r1"], check=True)
+subprocess.run([curl, f"{r[1]}/reset?node=r2"], check=True)
+subprocess.run([curl, f"{r[2]}/reset?node=r3"], check=True)
 
-echo "* Monitoring signals at endpoints"
+print("* Monitoring signals at endpoints")
 
-
-echo "* Configuring ROADM to forward ch1 from t1 to t2"
-$curl "$r1/connect?node=r1&port1=3&port2=3&channels=6"
-$curl "$r1/connect?node=r1&port1=4&port2=4&channels=12"
-$curl "$r1/connect?node=r1&port1=5&port2=5&channels=18"
-$curl "$r1/connect?node=r1&port1=6&port2=6&channels=24"
-$curl "$r1/connect?node=r1&port1=7&port2=7&channels=30"
-$curl "$r2/connect?node=r2&port1=8&port2=8&channels=36"
-$curl "$r2/connect?node=r2&port1=9&port2=9&channels=42"
-$curl "$r2/connect?node=r2&port1=10&port2=10&channels=48"
-$curl "$r2/connect?node=r2&port1=11&port2=11&channels=54"
-$curl "$r2/connect?node=r2&port1=12&port2=12&channels=60"
-$curl "$r3/connect?node=r3&port1=13&port2=13&channels=66"
-$curl "$r3/connect?node=r3&port1=14&port2=14&channels=72"
-$curl "$r3/connect?node=r3&port1=15&port2=15&channels=78"
-$curl "$r3/connect?node=r3&port1=16&port2=16&channels=84"
-$curl "$r3/connect?node=r3&port1=17&port2=17&channels=90"
-# # r1 and t1 to t5
-# $curl "$r1/connect?node=r1&port1=2&port2=2&channels=41"
-# $curl "$r1/connect?node=r1&port1=3&port2=2&channels=41"
-# $curl "$r1/connect?node=r1&port1=4&port2=2&channels=41"
-# $curl "$r1/connect?node=r1&port1=5&port2=2&channels=41"
-# $curl "$r1/connect?node=r1&port1=6&port2=2&channels=41"
-
-# # r2 and t6 to t10
-# $curl "$r2/connect?node=r2&port1=7&port2=3&channels=41"
-# $curl "$r2/connect?node=r2&port1=8&port2=3&channels=41"
-# $curl "$r2/connect?node=r2&port1=9&port2=3&channels=41"
-# $curl "$r2/connect?node=r2&port1=10&port2=3&channels=41"
-# $curl "$r2/connect?node=r2&port1=11&port2=3&channels=41"
-
-# # r3 and t11 to 15
-# $curl "$r3/connect?node=r3&port1=12&port2=4&channels=41"
-# $curl "$r3/connect?node=r3&port1=13&port2=4&channels=41"
-# $curl "$r3/connect?node=r3&port1=14&port2=4&channels=41"
-# $curl "$r3/connect?node=r3&port1=15&port2=4&channels=41"
-# $curl "$r3/connect?node=r3&port1=16&port2=4&channels=41"
-
-
+print("* Configuring ROADM to forward ch1 from t1 to t2")
+for i, port in enumerate(range(3, 8)):
+    subprocess.run([curl, f"{r[0]}/connect?node=r1&port1={port}&port2={port}&channels={i*6+6}"], check=True)
+for i, port in enumerate(range(8, 13)):
+    subprocess.run([curl, f"{r[1]}/connect?node=r2&port1={port}&port2={port}&channels={i*6+36}"], check=True)
+for i, port in enumerate(range(13, 18)):
+    subprocess.run([curl, f"{r[2]}/connect?node=r3&port1={port}&port2={port}&channels={i*6+66}"], check=True)
 
 # r1 and r2 
-$curl "$r1/connect?node=r1&port1=30&port2=30&channels=40"
-$curl "$r2/connect?node=r2&port1=31&port2=31&channels=40"
-# r2 and r3
-$curl "$r2/connect?node=r2&port1=40&port2=40&channels=50"
-$curl "$r3/connect?node=r3&port1=41&port2=41&channels=50"
-# r2 and t2
+subprocess.run([curl, f"{r[0]}/connect?node=r1&port1=30&port2=30&channels=40"], check=True)
+subprocess.run([curl, f"{r[1]}/connect?node=r2&port1=31&port2=31&channels=40"], check=True)
 
+# r2 and r3 
+subprocess.run([curl, f"{r[1]}/connect?node=r2&port1=40&port2=40&channels=50"], check=True)
+subprocess.run([curl, f"{r[2]}/connect?node=r3&port1=41&port2=41&channels=50"], check=True)
 
+t = [f"{url}/turn_on?node=t{i}" for i in range(1, 16)]
+for i in range(15):
+    subprocess.run(['curl', t[i]], check=True)
 
+print("* Monitoring signals at endpoints")
+for i in range(1, 16):
+    tname = f"t{i}"
+    url = t[i-1]
+    subprocess.run([curl, f"{url}/monitor?monitor={tname}-monitor"], check=True)
+    print(f"* {tname}")  # Moved the print statement inside the loop
+subprocess.run([curl, f"{url}/monitor?monitor={tname}-monitor"], check=True)  # Removed duplicate line
 
-
-
-
-
-echo "* Turning on terminals/transceivers"
-
-$curl "$t1/turn_on?node=t1"
-$curl "$t2/turn_on?node=t2"
-$curl "$t3/turn_on?node=t3"
-$curl "$t3/turn_on?node=t4"
-$curl "$t3/turn_on?node=t5"
-$curl "$t3/turn_on?node=t6"
-$curl "$t3/turn_on?node=t7"
-$curl "$t3/turn_on?node=t8"
-$curl "$t3/turn_on?node=t9"
-$curl "$t3/turn_on?node=t10"
-$curl "$t3/turn_on?node=t11"
-$curl "$t3/turn_on?node=t12"
-$curl "$t3/turn_on?node=t13"
-$curl "$t3/turn_on?node=t14"
-$curl "$t3/turn_on?node=t15"
-
-for tname in t1 t2 t3 t4 t5 t6 t7 t8 t9 t10 t11 t12 t13 t14 t15; do
-    url=${!tname}
-    $curl "$url/monitor?monitor=$tname-monitor"
-done
-
-echo "* Monitoring signals at endpoints"
-for tname in t1 t2 t3 t4 t5 t6 t7 t8 t9 t10 t11 t12 t13 t14 t15; do
-    url=${!tname}
-    echo "* $tname"
-    $curl "$url/monitor?monitor=$tname-monitor"
-done
-
-
-echo "* Done."
+print("* Done.")
