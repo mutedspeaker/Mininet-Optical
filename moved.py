@@ -23,6 +23,15 @@ from sys import argv
 import subprocess
 import os
 import stat
+import sys
+
+def end():
+    foo=raw_input()
+    sys.exit()
+
+print 'Press enter to Exit python and Terminal'
+
+
 '''
 
  h1 - s1 - (t1,t2,t3,t4,t5) - r1 -- r2 -- r3 -- (t10,t11,t12,t13,t14,15) - s3 - h3
@@ -197,26 +206,7 @@ if __name__ == '__main__':
     script_path = '/home/ojas/Desktop/mycode/' + script_name
     subprocess.call(['gnome-terminal','--', 'bash', '-c','./' + script_name + '; $SHELL'])
     plotNet(net)
-    test(net) if 'test' in argv else CLI(net)
-    
-    
-    # Start the shell process
-    process = subprocess.Popen(['bash'], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
-
-    # Send the 'signals' command to the shell and capture its output
-    command = 'signals\n'.encode('utf-8')
-    process.stdin.write(command)
-    out = process.stdout.read().decode('utf-8')
-
-    # Print the output
-    print(out)
-
-    # Print the output to the terminal
-    out  = result.stdout
-    with open('output.txt', 'a') as file:
-        file.write(str(out))
-        file.write('\n')
-        
-        
+    test(net) if 'test' in argv else CLI(net)    
     restServer.stop()
     net.stop()
+    end()
