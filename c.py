@@ -1,6 +1,8 @@
 import subprocess
 
-# Run a command and capture its output
-cmd = "ls -l"
-output = subprocess.check_output(cmd, shell=True, universal_newlines=True)
-print(output)
+# Run a shell command and capture its output
+command = "ls -l"
+result = subprocess.run(command, shell=True, capture_output=True, text=True)
+
+# Print the output to the terminal
+print(result.stdout)
