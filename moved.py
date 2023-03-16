@@ -202,11 +202,28 @@ if __name__ == '__main__':
     script_name = 'bash2.sh'
     script_path = '/home/ojas/Desktop/mycode/' + script_name
     subprocess.call(['gnome-terminal','--', 'bash', '-c','./' + script_name + '; $SHELL; exit'])
-    while True:
-    	sys.exit()
     plotNet(net)
     test(net) if 'test' in argv else CLI(net)
     restServer.stop()
     net.stop()
-    while True:
-    	sys.exit()
+    
+    cleanup()
+    setLogLevel('info')
+
+    topo = SingleROADMTopo()
+    net = Mininet(topo=topo, switch=OVSBridge, controller=None)
+    restServer = RestServer(net)
+    net.start()
+    restServer.start()
+    a = bash_text()
+    bash_creator(a)	
+    st = os.stat('bash2.sh')
+    os.chmod('bash2.sh',st.st_mode | stat.S_IEXEC)  
+    script_name = 'bash2.sh'
+    script_path = '/home/ojas/Desktop/mycode/' + script_name
+    subprocess.call(['gnome-terminal','--', 'bash', '-c','./' + script_name + '; $SHELL; exit'])
+    plotNet(net)
+    test(net) if 'test' in argv else CLI(net)
+    restServer.stop()
+    net.stop()
+    print("Will you work oh darling?")
