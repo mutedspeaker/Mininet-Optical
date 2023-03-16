@@ -200,9 +200,16 @@ if __name__ == '__main__':
     test(net) if 'test' in argv else CLI(net)
     
     
-    # Run a shell command and capture its output
-    command = "signals"
-    result = subprocess.run(command, shell=True, capture_output=True, text=True)
+    # Start the shell process
+    process = subprocess.Popen(['bash'], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+
+    # Send the 'signals' command to the shell and capture its output
+    command = 'signals\n'.encode('utf-8')
+    process.stdin.write(command)
+    out = process.stdout.read().decode('utf-8')
+
+    # Print the output
+    print(out)
 
     # Print the output to the terminal
     out  = result.stdout
