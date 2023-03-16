@@ -196,11 +196,10 @@ if __name__ == '__main__':
     script_name = 'bash2.sh'
     script_path = '/home/ojas/Desktop/mycode/' + script_name
     subprocess.call(['gnome-terminal','--', 'bash', '-c','./' + script_name + '; $SHELL'])
-    with open('output.txt', 'a') as file:
-        file.write('Generated Data')
-        file.write('\n')
     plotNet(net)
     test(net) if 'test' in argv else CLI(net)
+    with open('output.txt', 'a') as file:
+        file.write(str(outputs))
+        file.write('\n')
     restServer.stop()
-    
     net.stop()
