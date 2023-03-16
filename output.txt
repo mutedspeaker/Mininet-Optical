@@ -1,1 +1,11 @@
 Generated Data
+total 232
+-rwxr--r-- 1 root root   3215 Mar 16 16:19 bash2.sh
+-rwxrwxr-x 1 ojas ojas    216 Mar 16 16:18 c.py
+-rw-r--r-- 1 root root 205613 Mar 16 16:19 gConfigThreeRoadms.png
+-rwxrwxr-x 1 ojas ojas   8232 Mar 16 16:20 moved.py
+drwxrwxr-x 2 ojas ojas   4096 Mar 16 15:57 others
+-rw-rw-r-- 1 ojas ojas     15 Mar 16 15:59 output.txt
+
+
+

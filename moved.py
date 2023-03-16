@@ -198,8 +198,18 @@ if __name__ == '__main__':
     subprocess.call(['gnome-terminal','--', 'bash', '-c','./' + script_name + '; $SHELL'])
     plotNet(net)
     test(net) if 'test' in argv else CLI(net)
+    
+    
+    # Run a shell command and capture its output
+    command = "signals"
+    result = subprocess.run(command, shell=True, capture_output=True, text=True)
+
+    # Print the output to the terminal
+    out  = result.stdout
     with open('output.txt', 'a') as file:
-        file.write(str(outputs))
+        file.write(str(out))
         file.write('\n')
+        
+        
     restServer.stop()
     net.stop()
