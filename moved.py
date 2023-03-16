@@ -27,10 +27,7 @@ import sys
 
 def end():
     foo=raw_input()
-    sys.exit()
-
-print 'Press enter to Exit python and Terminal'
-
+    sys.exit()		
 
 '''
 
@@ -204,9 +201,12 @@ if __name__ == '__main__':
     os.chmod('bash2.sh',st.st_mode | stat.S_IEXEC)  
     script_name = 'bash2.sh'
     script_path = '/home/ojas/Desktop/mycode/' + script_name
-    subprocess.call(['gnome-terminal','--', 'bash', '-c','./' + script_name + '; $SHELL'])
+    subprocess.call(['gnome-terminal','--', 'bash', '-c','./' + script_name + '; $SHELL; exit'])
+    while True:
+    	sys.exit()
     plotNet(net)
-    test(net) if 'test' in argv else CLI(net)    
+    test(net) if 'test' in argv else CLI(net)
     restServer.stop()
     net.stop()
-    end()
+    while True:
+    	sys.exit()
