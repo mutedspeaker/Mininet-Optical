@@ -1,5 +1,4 @@
 #!/bin/bash -x
-
 set -e  # exit script on error
 
 # URL for REST server

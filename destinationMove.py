@@ -216,4 +216,6 @@ if __name__ == '__main__':
     test(net) if 'test' in argv else CLI(net)
     restServer.stop()
     net.stop()
-    run()
+    rc = subprocess.call("./gconfigThreeRoadm.sh")
+    #run()
+    
