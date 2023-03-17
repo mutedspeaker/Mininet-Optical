@@ -42,15 +42,19 @@ def bash_text(n):
     a = ''
     a += "set -e\n"
     a += 'url="localhost:8080";\n'
-    a += 't1=$url;'
-    for i in range(1,n+1):
-        a += 't{i}=$url;\n'
+    a += 'declare -a t=() # declare an array\n'
+    a += 'for ((i=1;i<=n+1;i++)); do\n'
+    a += '    t[i]=$url\n'
+    a += 'done\n'
+	
     a += 'r1=$url; r2=$url; r3=$url\n'
     a += 'curl="curl -s"\n'
     a += 'echo "* Configuring terminals in threeRoadms.py network"\n'
 
-    for i in range(1,n+1):
-        a += f'$curl "$t{i}/connect?node=t{i}&ethPort={i+2}&wdmPort={i+2}&channel={i*6}"\n'
+#     for i in range(1,n+1):
+#         a += f'$curl "$t{i}/connect?node=t{i}&ethPort={i+2}&wdmPort={i+2}&channel={i*6}"\n'
+    for i in range(1, n+1):
+        a += f'curl "{url}/t{t[i]}/connect?node=t{t[i]}&ethPort={i+2}&wdmPort={i+2}&channel={i*6}"\n'
 
     a += 'echo "* Resetting ROADM"\n'
 
@@ -71,23 +75,40 @@ def bash_text(n):
     a += '$curl "$r2/connect?node=r2&port1=400&port2=400&channels=50"\n'
     a += '$curl "$r3/connect?node=r3&port1=410&port2=410&channels=50"\n'
 
-    for i in range(1, n):
-        a += f'$curl "$t{i}/turn_on?node=t{i}"\n'
+#     for i in range(1, n):
+#         a += f'$curl "$t{i}/turn_on?node=t{i}"\n'
+    a += '''# turn on the roadm
+    for ((i=1;i<=n;i++)); do
+        curl "$url$t[i]/turn_on?node=t$i"
+    done
+    '''
+	
     g = ''
     for i in range(1,40 +1):
         g = g + f't{i} '
     
-    a += 'for tname in ' + g + '; do\n'
-    a += '    url=${!tname}\n'
-    a += '    $curl "$url/monitor?monitor=$tname-monitor"\n'
-    a += 'done\n'
+#     a += 'for tname in ' + g + '; do\n'
+#     a += '    url=${!tname}\n'
+#     a += '    $curl "$url/monitor?monitor=$tname-monitor"\n'
+#     a += 'done\n'
+    a += '''for ((i=1;i<=n;i++)); do
+        tname="t$i"
+        url="${t[i]}"
+        $curl "$url/monitor?monitor=$tname-monitor"
+    done'''
     
     a += 'echo "* Monitoring signals at endpoints"\n'
-    a += 'for tname in ' + g + '; do\n'
-    a += '    url=${!tname}\n'
-    a += '    echo "* $tname"\n'
-    a += '    $curl "$url/monitor?monitor=$tname-monitor"\n'
-    a += 'done\n'
+#     a += 'for tname in ' + g + '; do\n'
+#     a += '    url=${!tname}\n'
+#     a += '    echo "* $tname"\n'
+#     a += '    $curl "$url/monitor?monitor=$tname-monitor"\n'
+#     a += 'done\n'
+    a += '''for ((i=1;i<=n;i++)); do
+        tname="t$i"
+        url=${t[$i]}
+        echo "* $tname"
+        $curl "$url/monitor?monitor=$tname-monitor"
+    done'''
 
     a += 'echo "* 007 OUT!"\n'
     
