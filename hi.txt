@@ -1,0 +1,3 @@
+*** Plotting network topology to gConfigThreeRoadms.png
+mininet-optical> *** Plotting network topology to gConfigThreeRoadms.png
+mininet-optical> 

@@ -109,7 +109,7 @@ class SingleROADMTopo(Topo):
         boost = ('boost', {'target_gain': 3.0*dB})
         amp1 = ('amp1', {'target_gain': 50*.22*dB})
         amp2 = ('amp2', {'target_gain': 50*.22*dB})
-        spans = [50*km, amp1, amp2, amp1, amp2, amp1, amp2, amp1, amp2, amp1, amp2, 50*km, amp1, amp2, amp1, amp2, amp1, amp2, amp1, amp2, amp1, amp2]
+        spans = [50*km, amp1, 50*km, amp2]
 	 # Add links
         for src, dst in [(h1, s1), (h2, s2), (h3, s3)]:
 	        self.addLink(src, dst)
@@ -118,7 +118,7 @@ class SingleROADMTopo(Topo):
 #             for dst in t:
 #                 self.addLink(src, dst, port2=1)
         for src, dst in [(s1, t[i]) for i in range(1, n//2 - 5)] + [(s2, t[i]) for i in range(n //2 -5, n//2 + 5, 2)] + [(s3, t[i]) for i in range(n//2 + 5, n)]:
-    self.addLink(src, dst, port2=1)
+            self.addLink(src, dst, port2=1)
 
     # Connections between routers and terminals
         for i in range(1, n//2 - 5):
@@ -209,9 +209,9 @@ if __name__ == '__main__':
         restServer.start()
         a = bash_text(i)
         bash_creator(a)	
-        st = os.stat('bash2.sh')
-        os.chmod('bash2.sh',st.st_mode | stat.S_IEXEC)  
-        script_name = 'bash2.sh'
+        st = os.stat('bash.sh')
+        os.chmod('bash.sh',st.st_mode | stat.S_IEXEC)  
+        script_name = 'bash.sh'
         script_path = '/home/ojas/Desktop/mycode/' + script_name
         subprocess.call(['gnome-terminal','--', 'bash', '-c','./' + script_name + '; $SHELL; exit'])
         plotNet(net)
