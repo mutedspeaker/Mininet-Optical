@@ -114,9 +114,11 @@ class SingleROADMTopo(Topo):
         for src, dst in [(h1, s1), (h2, s2), (h3, s3)]:
 	        self.addLink(src, dst)
             
-        for src in s:
-            for dst in t:
-                self.addLink(src, dst, port2=1)
+#         for src in s:
+#             for dst in t:
+#                 self.addLink(src, dst, port2=1)
+	for src, dst in [(s1, t[i]) for i in range(1, n//2 - 5)] + [(s2, t[i]) for i in range(n //2 -5, n//2 + 5, 2)] + [(s3, t[i]) for i in range(n//2 + 5, n)]:
+self.addLink(src, dst, port2=1)
 
     # Connections between routers and terminals
         for i in range(1, n//2 - 5):
