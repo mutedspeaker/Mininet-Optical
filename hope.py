@@ -79,7 +79,7 @@ done\n'''
 
     a += '''# turn on the roadm
 for ((i=0;i<n;i++)); do
-    curl "$t[i]/turn_on?node=t$i"
+    curl "$t${t[i]}/turn_on?node=$t${t[i]}"
 done\n'''
 
     a += '''# Monitoring signals before endpoints
