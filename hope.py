@@ -42,7 +42,7 @@ def bash_text(n):
     a = ''
     a += "set -e\n"
     a += 'url="localhost:8080";\n'
-    a += 't1=$url;
+    a += 't1=$url;'
     for i in range(1,n+1):
         a += 't{i}=$url;\n'
     a += 'r1=$url; r2=$url; r3=$url\n'
