@@ -53,8 +53,10 @@ def bash_text(n):
 
 #     for i in range(1,n+1):
 #         a += f'$curl "$t{i}/connect?node=t{i}&ethPort={i+2}&wdmPort={i+2}&channel={i*6}"\n'
-    for i in range(1, n+1):
-        a += f'curl "{url}/t{t[i]}/connect?node=t{t[i]}&ethPort={i+2}&wdmPort={i+2}&channel={i*6}"\n'
+    a += '''# loop through the array and call the curl command
+for ((i=1;i<=n;i++)); do
+    $curl "$url/t${t[i]}/connect?node=t${t[i]}&ethPort=$((i+2))&wdmPort=$((i+2))&channel=$((i*6))"
+done'''
 
     a += 'echo "* Resetting ROADM"\n'
 
