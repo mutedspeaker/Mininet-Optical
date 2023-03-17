@@ -43,7 +43,7 @@ def bash_text(n):
     a += "set -e\n"
     a += 'url="localhost:8080";\n'
     a += 'declare -a t=() # declare an array\n'
-    a += 'for ((i=1;i<=n+1;i++)); do\n'
+    a += 'for ((i=0;i<n;i++)); do\n'
     a += '    t[i]=$url\n'
     a += 'done\n'
 	
@@ -51,11 +51,11 @@ def bash_text(n):
     a += 'curl="curl -s"\n'
     a += 'echo "* Configuring terminals in threeRoadms.py network"\n'
 
-#     for i in range(1,n+1):
+#     for i in range(n):
 #         a += f'$curl "$t{i}/connect?node=t{i}&ethPort={i+2}&wdmPort={i+2}&channel={i*6}"\n'
     a += '''# loop through the array and call the curl command
-for ((i=1;i<=n;i++)); do
-    $curl "$url/t${t[i]}/connect?node=t${t[i]}&ethPort=$((i+2))&wdmPort=$((i+2))&channel=$((i*6))"
+for ((i=0;i<n;i++)); do
+    $curl "$t${t[i]}/connect?node=t${t[i]}&ethPort=$((i+3))&wdmPort=$((i+3))&channel=$((i))"
 done\n'''
 
     a += 'echo "* Resetting ROADM"\n'
@@ -65,52 +65,36 @@ done\n'''
 
     a += 'echo "* Configuring ROADM to forward ch1 from t1 to t2"\n'
 
-    for i in range(1,n//2 - 5):
-        a += f'$curl "$r1/connect?node=r1&port1={i+2}&port2={i+2}&channels={i*6}"\n'
-    for i in range(n //2 -5,n//2 + 5,2):
-        a += f'$curl "$r2/connect?node=r2&port1={i+2}&port2={i+2}&channels={i*6}"\n'
-    for i in range(n//2 + 5,n):
-        a += f'$curl "$r3/connect?node=r3&port1={i+2}&port2={i+2}&channels={i*6}"\n'
+    for i in range(n//2 - 2):
+        a += f'$curl "$r1/connect?node=r1&port1={i+3}&port2={i+3}&channels={i+1}"\n'
+    for i in range(n //2 -2,n//2 + 2):
+        a += f'$curl "$r2/connect?node=r2&port1={i+3}&port2={i+3}&channels={i+1}"\n'
+    for i in range(n//2 + 2,n):
+        a += f'$curl "$r3/connect?node=r3&port1={i+3}&port2={i+3}&channels={i+1}"\n'
 
     a += '$curl "$r1/connect?node=r1&port1=300&port2=300&channels=40"\n'
     a += '$curl "$r2/connect?node=r2&port1=310&port2=310&channels=40"\n'
     a += '$curl "$r2/connect?node=r2&port1=400&port2=400&channels=50"\n'
     a += '$curl "$r3/connect?node=r3&port1=410&port2=410&channels=50"\n'
 
-#     for i in range(1, n):
-#         a += f'$curl "$t{i}/turn_on?node=t{i}"\n'
     a += '''# turn on the roadm
-    for ((i=1;i<=n;i++)); do
-        curl "$url$t[i]/turn_on?node=t$i"
-    done\n
-    '''
-	
-    g = ''
-    for i in range(1,40 +1):
-        g = g + f't{i} '
-    
-#     a += 'for tname in ' + g + '; do\n'
-#     a += '    url=${!tname}\n'
-#     a += '    $curl "$url/monitor?monitor=$tname-monitor"\n'
-#     a += 'done\n'
-    a += '''for ((i=1;i<=n;i++)); do
-        tname="t$i"
-        url="${t[i]}"
-        $curl "$url/monitor?monitor=$tname-monitor"
-    done\n'''
-    
-    a += 'echo "* Monitoring signals at endpoints"\n'
-#     a += 'for tname in ' + g + '; do\n'
-#     a += '    url=${!tname}\n'
-#     a += '    echo "* $tname"\n'
-#     a += '    $curl "$url/monitor?monitor=$tname-monitor"\n'
-#     a += 'done\n'
-    a += '''for ((i=1;i<=n;i++)); do
-        tname="t$i"
-        url=${t[$i]}
-        echo "* $tname"
-        $curl "$url/monitor?monitor=$tname-monitor"
-    done\n'''
+for ((i=0;i<n;i++)); do
+    curl "$t[i]/turn_on?node=t$i"
+done\n'''
+
+    a += '''# Monitoring signals before endpoints
+for ((i=0;i<n;i++)); do
+    tname="t$i"
+    url="${t[i]}"
+    $curl "$url/monitor?monitor=$tname-monitor"
+done\n'''
+
+    a += '''for ((i=0;i<n;i++)); do
+    tname="t$i"
+    url=${t[$i]}
+    echo "* $tname"
+    $curl "$url/monitor?monitor=$tname-monitor"
+done\n'''
 
     a += 'echo "* 007 OUT!"\n'
     
@@ -124,7 +108,7 @@ class SingleROADMTopo(Topo):
     def build(self):
         h1, h2, h3= [self.addHost(f'h{i}') for i in range(1, 4)]
         s = s1, s2, s3 = [self.addSwitch(f's{i}') for i in range(1, 4)]
-        t = [self.addSwitch(f't{i}', cls=Terminal, transceivers=[('tx1', 0*dBm, 'C')], monitor_mode='in') for i in range(1, n+1)]
+        t = [self.addSwitch(f't{i}', cls=Terminal, transceivers=[('tx1', 0*dBm, 'C')], monitor_mode='in') for i in range(n)]
         r1, r2, r3 = [self.addSwitch(f'r{i}', cls=ROADM) for i in range(1, 4)]
 	
 	
@@ -140,18 +124,18 @@ class SingleROADMTopo(Topo):
 #         for src in s:
 #             for dst in t:
 #                 self.addLink(src, dst, port2=1)
-        for src, dst in [(s1, t[i]) for i in range(1, n//2 - 5)] + [(s2, t[i]) for i in range(n //2 -5, n//2 + 5, 2)] + [(s3, t[i]) for i in range(n//2 + 5, n)]:
+        for src, dst in [(s1, t[i]) for i in range(n//2 - 2)] + [(s2, t[i]) for i in range(n //2 -2, n//2 + 2)] + [(s3, t[i]) for i in range(n//2 + 2, n)]:
             self.addLink(src, dst, port2=1)
 
     # Connections between routers and terminals
-        for i in range(1, n//2 - 5):
-            self.addLink(r1, t[i], cls=OpticalLink, port1=i+2, port2=i+2, boost1=boost, spans=spans)
+        for i in range(n//2 - 2):
+            self.addLink(r1, t[i], cls=OpticalLink, port1=i+3, port2=i+3, boost1=boost, spans=spans)
 
-        for i in range(n //2 -5, n//2 + 5, 2):
-            self.addLink(r2, t[i], cls=OpticalLink, port1=i+2, port2=i+2, boost1=boost, spans=spans)
+        for i in range(n //2 -2, n//2 + 2):
+            self.addLink(r2, t[i], cls=OpticalLink, port1=i+3, port2=i+3, boost1=boost, spans=spans)
 
-        for i in range(n//2 + 5, n):
-            self.addLink(r3, t[i], cls=OpticalLink, port1=i+2, port2=i+2, boost1=boost, spans=spans)
+        for i in range(n//2 + 2, n):
+            self.addLink(r3, t[i], cls=OpticalLink, port1=i+3, port2=i+3, boost1=boost, spans=spans)
 
 	# Adding links between r1 and r2
         self.addLink(r1, r2, cls=OpticalLink, port1=300, port2=300, boost1=boost, spans=spans)
@@ -243,6 +227,7 @@ if __name__ == '__main__':
     # 	net.stop()
 
     n = 40
+    i = 40
     cleanup()
     setLogLevel('info')
 

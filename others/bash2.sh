@@ -39,10 +39,12 @@ $curl "$r3/connect?node=r3&port1=14&port2=14&channels=72"
 $curl "$r3/connect?node=r3&port1=15&port2=15&channels=78"
 $curl "$r3/connect?node=r3&port1=16&port2=16&channels=84"
 $curl "$r3/connect?node=r3&port1=17&port2=17&channels=90"
+
 $curl "$r1/connect?node=r1&port1=30&port2=30&channels=40"
 $curl "$r2/connect?node=r2&port1=31&port2=31&channels=40"
 $curl "$r2/connect?node=r2&port1=40&port2=40&channels=50"
 $curl "$r3/connect?node=r3&port1=41&port2=41&channels=50"
+
 $curl "$t1/turn_on?node=t1"
 $curl "$t2/turn_on?node=t2"
 $curl "$t3/turn_on?node=t3"
@@ -58,10 +60,12 @@ $curl "$t12/turn_on?node=t12"
 $curl "$t13/turn_on?node=t13"
 $curl "$t14/turn_on?node=t14"
 $curl "$t15/turn_on?node=t15"
+
 for tname in t1 t2 t3 t4 t5 t6 t7 t8 t9 t10 t11 t12 t13 t14 t15; do
     url=${!tname}
     $curl "$url/monitor?monitor=$tname-monitor"
 done
+
 echo "* Monitoring signals at endpoints"
 for tname in t1 t2 t3 t4 t5 t6 t7 t8 t9 t10 t11 t12 t13 t14 t15; do
     url=${!tname}
