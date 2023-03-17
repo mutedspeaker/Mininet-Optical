@@ -56,7 +56,7 @@ def bash_text(n):
     a += '''# loop through the array and call the curl command
 for ((i=1;i<=n;i++)); do
     $curl "$url/t${t[i]}/connect?node=t${t[i]}&ethPort=$((i+2))&wdmPort=$((i+2))&channel=$((i*6))"
-done'''
+done\n'''
 
     a += 'echo "* Resetting ROADM"\n'
 
@@ -82,7 +82,7 @@ done'''
     a += '''# turn on the roadm
     for ((i=1;i<=n;i++)); do
         curl "$url$t[i]/turn_on?node=t$i"
-    done
+    done\n
     '''
 	
     g = ''
@@ -97,7 +97,7 @@ done'''
         tname="t$i"
         url="${t[i]}"
         $curl "$url/monitor?monitor=$tname-monitor"
-    done'''
+    done\n'''
     
     a += 'echo "* Monitoring signals at endpoints"\n'
 #     a += 'for tname in ' + g + '; do\n'
@@ -110,7 +110,7 @@ done'''
         url=${t[$i]}
         echo "* $tname"
         $curl "$url/monitor?monitor=$tname-monitor"
-    done'''
+    done\n'''
 
     a += 'echo "* 007 OUT!"\n'
     
@@ -221,24 +221,24 @@ def test(net):
 if __name__ == '__main__':
     
     for i in [20, 40]:
-        n = i
-        cleanup()
-        setLogLevel('info')
+	n = i
+	cleanup()
+	setLogLevel('info')
 
-        topo = SingleROADMTopo()
-        net = Mininet(topo=topo, switch=OVSBridge, controller=None)
-        restServer = RestServer(net)
-        net.start()
-        restServer.start()
-        a = bash_text(i)
-        bash_creator(a)	
-        st = os.stat('bash.sh')
-        os.chmod('bash.sh',st.st_mode | stat.S_IEXEC)  
-        script_name = 'bash.sh'
-        script_path = '/home/ojas/Desktop/mycode/' + script_name
-        subprocess.call(['gnome-terminal','--', 'bash', '-c','./' + script_name + '; $SHELL; exit'])
-        plotNet(net)
-        test(net) if 'test' in argv else CLI(net)
-        restServer.stop()
-        net.stop()
+	topo = SingleROADMTopo()
+	net = Mininet(topo=topo, switch=OVSBridge, controller=None)
+	restServer = RestServer(net)
+	net.start()
+	restServer.start()
+	a = bash_text(i)
+	bash_creator(a)	
+	st = os.stat('bash.sh')
+	os.chmod('bash.sh',st.st_mode | stat.S_IEXEC)  
+	script_name = 'bash.sh'
+	script_path = '/home/ojas/Desktop/mycode/' + script_name
+	subprocess.call(['gnome-terminal','--', 'bash', '-c','./' + script_name + '; $SHELL;'])
+	plotNet(net)
+	test(net) if 'test' in argv else CLI(net)
+	restServer.stop()
+	net.stop()
     
