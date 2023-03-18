@@ -9,7 +9,7 @@ curl="curl -s"
 echo "* Configuring terminals in threeRoadms.py network"
 # loop through the array and call the curl command
 for ((i=0;i<n;i++)); do
-    $curl "$t${t[i]}/connect?node=t${t[i]}&ethPort=$((i+3))&wdmPort=$((i+3))&channel=$((i))"
+    $curl "${t[i]}/connect?node=${t[i]}&ethPort=$((i+3))&wdmPort=$((i+3))&channel=$((i))"
 done
 echo "* Resetting ROADM"
 $curl "$r1/reset?node=r1"
@@ -62,17 +62,17 @@ $curl "$r2/connect?node=r2&port1=400&port2=400&channels=50"
 $curl "$r3/connect?node=r3&port1=410&port2=410&channels=50"
 # turn on the roadm
 for ((i=0;i<n;i++)); do
-    curl "$t${t[i]}/turn_on?node=$t${t[i]}"
+    curl "${t[i]}/turn_on?node=${t[i]}"
 done
 # Monitoring signals before endpoints
 for ((i=0;i<n;i++)); do
-    tname="t$i"
-    url="${t[i]}"
+    tname="${t[i]}"
+    url=${!tname}
     $curl "$url/monitor?monitor=$tname-monitor"
 done
 for ((i=0;i<n;i++)); do
-    tname="t$i"
-    url=${t[$i]}
+    tname="${t[i]}"
+    url=${!tname}
     echo "* $tname"
     $curl "$url/monitor?monitor=$tname-monitor"
 done
