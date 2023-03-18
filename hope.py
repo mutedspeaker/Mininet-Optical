@@ -90,7 +90,7 @@ for ((i=0;i<n;i++)); do
 done\n'''
 
     a += '''for ((i=0;i<n;i++)); do
-    tname="${t[i]}"
+    tname=${t[i]}
     url=${!tname}
     echo "* $tname"
     $curl "$url/monitor?monitor=$tname-monitor"
