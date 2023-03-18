@@ -55,7 +55,7 @@ def bash_text(n):
 #         a += f'$curl "$t{i}/connect?node=t{i}&ethPort={i+2}&wdmPort={i+2}&channel={i*6}"\n'
     a += '''# loop through the array and call the curl command
 for ((i=0;i<n;i++)); do
-    $curl "$t${t[i]}/connect?node=t${t[i]}&ethPort=$((i+3))&wdmPort=$((i+3))&channel=$((i))"
+    $curl "${t[i]}/connect?node=${t[i]}&ethPort=$((i+3))&wdmPort=$((i+3))&channel=$((i))"
 done\n'''
 
     a += 'echo "* Resetting ROADM"\n'
@@ -79,19 +79,19 @@ done\n'''
 
     a += '''# turn on the roadm
 for ((i=0;i<n;i++)); do
-    curl "$t${t[i]}/turn_on?node=$t${t[i]}"
+    curl "${t[i]}/turn_on?node=${t[i]}"
 done\n'''
 
     a += '''# Monitoring signals before endpoints
 for ((i=0;i<n;i++)); do
-    tname="t$i"
-    url="${t[i]}"
+    tname="${t[i]}"
+    url=${!tname}
     $curl "$url/monitor?monitor=$tname-monitor"
 done\n'''
 
     a += '''for ((i=0;i<n;i++)); do
-    tname="t$i"
-    url=${t[$i]}
+    tname="${t[i]}"
+    url=${!tname}
     echo "* $tname"
     $curl "$url/monitor?monitor=$tname-monitor"
 done\n'''
