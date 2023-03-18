@@ -62,7 +62,7 @@ $curl "$r2/connect?node=r2&port1=400&port2=400&channels=50"
 $curl "$r3/connect?node=r3&port1=410&port2=410&channels=50"
 # turn on the roadm
 for ((i=0;i<n;i++)); do
-    curl "$t[i]/turn_on?node=t$i"
+    curl "$t${t[i]}/turn_on?node=$t${t[i]}"
 done
 # Monitoring signals before endpoints
 for ((i=0;i<n;i++)); do
