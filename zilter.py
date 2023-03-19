@@ -1,7 +1,7 @@
 import csv
 
 input_file = "final.txt"
-output_file = "output.csv"
+output_file = "output2.csv"
 
 with open(input_file, "r") as f_in, open(output_file, "w", newline="") as f_out:
     writer = csv.writer(f_out)
@@ -12,7 +12,7 @@ with open(input_file, "r") as f_in, open(output_file, "w", newline="") as f_out:
         fields = line.strip().split()
         t = fields[0]
         try:
-        	ch = float(fields[2][3:5]) # extract number from ch field
+        	ch = int(fields[2][3:5]) # extract number from ch field
         except:
         	ch = float(fields[2][3:4])
         try:
