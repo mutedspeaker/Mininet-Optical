@@ -17,8 +17,6 @@ awk '/^(*** t)[1-9][1-9]?( )/  {print substr($0,5)}'  output.txt > final.txt
 
 # awk '/^t[0-9]+/{gsub(/[<>:]/,"",$3); printf "%s %s %s %s %s\n", $1, $3, substr($3,4,length($3)-7), $6, $8}' final.txt > gg.txt
 
-awk '/^t[0-9]+/ { 
-        match($0, /<ch([0-9]+):([0-9.]+)THz>/, ch_match); 
-        printf("%s %s %s gOSNR: %s dB OSNR: %s dB\n", $1, ch_match[1], ch_match[2], $(NF-1), $NF) 
-    }' final.txt 
+awk '/^t[0-9]+ receiving/ {match($0, /<ch([0-9]+):([0-9]+\.[0-9]+)THz>/, arr); printf "%s ch%s %s gOSNR: %s dB OSNR: %s dB\n", $1, arr[1], arr[2], $(NF-1), $NF}' input.txt
+
 
