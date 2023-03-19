@@ -114,47 +114,97 @@ def bash_creator(a):
     f.write(a)
     f.close()
   
+# class SingleROADMTopo(Topo):
+#     def build(self):
+#         h1, h2, h3= [self.addHost(f'h{i}') for i in range(1, 4)]
+#         s = s1, s2, s3 = [self.addSwitch(f's{i}') for i in range(1, 4)]
+#         t = [self.addSwitch(f't{i}', cls=Terminal, transceivers=[('tx1', 0*dBm, 'C')], monitor_mode='in') for i in range(n)]
+#         r1, r2, r3 = [self.addSwitch(f'r{i}', cls=ROADM) for i in range(1, 4)]
+	
+	
+# 	# Wdm Links:
+#         boost = ('boost', {'target_gain': 3.0*dB})
+#         amp1 = ('amp1', {'target_gain': 50*.22*dB})
+#         amp2 = ('amp2', {'target_gain': 50*.22*dB})
+#         spans = [50*km, amp1, 50*km, amp2]
+# 	 # Add links
+#         for src, dst in [(h1, s1), (h2, s2), (h3, s3)]:
+# 	        self.addLink(src, dst)
+# #         for src in s:
+# #             for dst in t:
+# #                 self.addLink(src, dst, port2=1)
+#         for src, dst in [(s1, t[i]) for i in range(n//2 - 2)] + [(s2, t[i]) for i in range(n //2 -2, n//2 + 2)] + [(s3, t[i]) for i in range(n//2 + 2, n)]:
+#             self.addLink(src, dst, port2=1)
+
+#     # Connections between routers and terminals
+#         for i in range(n//2 - 2):
+#             self.addLink(r1, t[i], cls=OpticalLink, port1=i+3, port2=i+3, boost1=boost, spans=spans)
+
+#         for i in range(n //2 -2, n//2 + 2):
+#             self.addLink(r2, t[i], cls=OpticalLink, port1=i+3, port2=i+3, boost1=boost, spans=spans)
+
+#         for i in range(n//2 + 2, n):
+#             self.addLink(r3, t[i], cls=OpticalLink, port1=i+3, port2=i+3, boost1=boost, spans=spans)
+
+# 	# Adding links between r1 and r2
+#         self.addLink(r1, r2, cls=OpticalLink, port1=300, port2=300, boost1=boost, spans=spans)
+#         self.addLink(r2, r1, cls=OpticalLink, port1=310, port2=310, boost1=boost, spans=spans)
+	
+# 	# Adding links between r2 and r3
+#         self.addLink(r2, r3, cls=OpticalLink, port1=400, port2=400, boost1=boost, spans=spans)
+#         self.addLink(r3, r2, cls=OpticalLink, port1=410, port2=410, boost1=boost, spans=spans)
+
 class SingleROADMTopo(Topo):
     def build(self):
         h1, h2, h3= [self.addHost(f'h{i}') for i in range(1, 4)]
         s = s1, s2, s3 = [self.addSwitch(f's{i}') for i in range(1, 4)]
-        t = [self.addSwitch(f't{i}', cls=Terminal, transceivers=[('tx1', 0*dBm, 'C')], monitor_mode='in') for i in range(n)]
+#         t = [self.addSwitch(f't{i}', cls=Terminal, transceivers=[('tx1', 0*dBm, 'C')], monitor_mode='in') for i in range(1,n+1)]
+        
+        # Generate variables t1 to tn and assign them to a list
+        t_vars = [f"t{i}" for i in range(1, n+1)]
+
+        # Use a list comprehension to create the switches and assign them to the t_vars
+        t_vars = [self.addSwitch(t_var, cls=Terminal, transceivers=[('tx1', 0*dBm, 'C')], monitor_mode='in') for t_var in t_vars]
+        
         r1, r2, r3 = [self.addSwitch(f'r{i}', cls=ROADM) for i in range(1, 4)]
-	
-	
-	# Wdm Links:
+        
+        # Wdm Links:
         boost = ('boost', {'target_gain': 3.0*dB})
         amp1 = ('amp1', {'target_gain': 50*.22*dB})
         amp2 = ('amp2', {'target_gain': 50*.22*dB})
         spans = [50*km, amp1, 50*km, amp2]
-	 # Add links
+        
+        # Add links
         for src, dst in [(h1, s1), (h2, s2), (h3, s3)]:
-	        self.addLink(src, dst)
-#         for src in s:
-#             for dst in t:
-#                 self.addLink(src, dst, port2=1)
-        for src, dst in [(s1, t[i]) for i in range(n//2 - 2)] + [(s2, t[i]) for i in range(n //2 -2, n//2 + 2)] + [(s3, t[i]) for i in range(n//2 + 2, n)]:
+            self.addLink(src, dst)
+
+        for src, dst in [(s1, t[i]) for i in range(1, n//2 - 2)] + [(s2, t[i]) for i in range(n //2 -2, n//2 + 2)] + [(s3, t[i]) for i in range(n//2 + 2, n+1)]:
+            self.addLink(src, dst, port2=1)
+        
+        link_tuples = [(s1, t_vars[i]) for i in range(5)] + [(s2, t_vars[i]) for i in range(5, 10)] + [(s3, t_vars[i]) for i in range(10, 15)]
+
+        for src, dst in link_tuples:
             self.addLink(src, dst, port2=1)
 
-    # Connections between routers and terminals
-        for i in range(n//2 - 2):
-            self.addLink(r1, t[i], cls=OpticalLink, port1=i+3, port2=i+3, boost1=boost, spans=spans)
+
+        # Connections between routers and terminals
+        for i in range(1, n//2 - 2):
+            self.addLink(r1, t_vars[i], cls=OpticalLink, port1=i+2, port2=i+2, boost1=boost, spans=spans)
 
         for i in range(n //2 -2, n//2 + 2):
-            self.addLink(r2, t[i], cls=OpticalLink, port1=i+3, port2=i+3, boost1=boost, spans=spans)
+            self.addLink(r2, t_vars[i], cls=OpticalLink, port1=i+2, port2=i+2, boost1=boost, spans=spans)
 
-        for i in range(n//2 + 2, n):
-            self.addLink(r3, t[i], cls=OpticalLink, port1=i+3, port2=i+3, boost1=boost, spans=spans)
+        for i in range(n//2 + 2, n+1):
+            self.addLink(r3, t_vars[i], cls=OpticalLink, port1=i+2, port2=i+2, boost1=boost, spans=spans)
 
-	# Adding links between r1 and r2
+        # Adding links between r1 and r2
         self.addLink(r1, r2, cls=OpticalLink, port1=300, port2=300, boost1=boost, spans=spans)
         self.addLink(r2, r1, cls=OpticalLink, port1=310, port2=310, boost1=boost, spans=spans)
-	
-	# Adding links between r2 and r3
+    
+        # Adding links between r2 and r3
         self.addLink(r2, r3, cls=OpticalLink, port1=400, port2=400, boost1=boost, spans=spans)
         self.addLink(r3, r2, cls=OpticalLink, port1=410, port2=410, boost1=boost, spans=spans)
-
-
+	
 # Debugging: Plot network graph
 def plotNet(net, outfile="gConfignRoadms.png", directed=False, layout='circo',
             colorMap=None, linksPerPair=5):
