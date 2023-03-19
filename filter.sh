@@ -20,5 +20,5 @@ awk '/^(*** t)[1-9][1-9]?( )/  {print substr($0,5)}'  output.txt > final.txt
 awk '/^t[0-9]+/ { 
         match($0, /<ch([0-9]+):([0-9.]+)THz>/, ch_match); 
         printf("%s %s %s gOSNR: %s dB OSNR: %s dB\n", $1, ch_match[1], ch_match[2], $(NF-1), $NF) 
-    }' text_file
+    }' final.txt 
 
