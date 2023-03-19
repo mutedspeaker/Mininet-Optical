@@ -56,7 +56,7 @@ def bash_text(n):
     
     a += '\necho "* Configuring terminals in nRoadms.py network"\n'
     for i in range(1,n + 1):
-        a += f'$curl "$t{i}/connect?node=t{i}&ethPort={i+2}&wdmPort={i+2}&channel={i*6}"\n'
+        a += f'$curl "$t{i}/connect?node=t{i}&ethPort={i+2}&wdmPort={i+2}&channel={i}"\n'
     
 
     a += '\necho "* Resetting ROADM"\n'
@@ -67,11 +67,11 @@ def bash_text(n):
     a += '\necho "* Configuring ROADM to connect r1,r2 and 4r3 to the respective terminals: "\n'
 
     for i in range(1,n//2 - 2):
-        a += f'$curl "$r1/connect?node=r1&port1={i+2}&port2={i+2}&channels={i*6}"\n'
+        a += f'$curl "$r1/connect?node=r1&port1={i+2}&port2={i+2}&channels={i}"\n'
     for i in range(n //2 -2,n//2 + 2):
-        a += f'$curl "$r2/connect?node=r2&port1={i+2}&port2={i+2}&channels={i*6}"\n'
+        a += f'$curl "$r2/connect?node=r2&port1={i+2}&port2={i+2}&channels={i}"\n'
     for i in range(n//2 + 2,n+1):
-        a += f'$curl "$r3/connect?node=r3&port1={i+2}&port2={i+2}&channels={i*6}"\n'
+        a += f'$curl "$r3/connect?node=r3&port1={i+2}&port2={i+2}&channels={i}"\n'
 
     a += '\n$curl "$r1/connect?node=r1&port1=300&port2=300&channels=40"\n'
     a += '$curl "$r2/connect?node=r2&port1=310&port2=310&channels=40"\n'
