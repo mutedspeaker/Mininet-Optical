@@ -177,11 +177,11 @@ class SingleROADMTopo(Topo):
         # Add links
         for src, dst in [(h1, s1), (h2, s2), (h3, s3)]:
             self.addLink(src, dst)
-
-        for src, dst in [(s1, t[i]) for i in range(1, n//2 - 2)] + [(s2, t[i]) for i in range(n //2 -2, n//2 + 2)] + [(s3, t[i]) for i in range(n//2 + 2, n+1)]:
+        print(n)
+        for src, dst in [(s1, t_vars[i]) for i in range(1, n//2 - 2)] + [(s2, t_vars[i]) for i in range(n //2 -2, n//2 + 2)] + [(s3, t_vars[i]) for i in range(n//2 + 2, n+1)]:
             self.addLink(src, dst, port2=1)
         
-        link_tuples = [(s1, t_vars[i]) for i in range(5)] + [(s2, t_vars[i]) for i in range(5, 10)] + [(s3, t_vars[i]) for i in range(10, 15)]
+        link_tuples = [(s1, t_vars[i]) for i in range(1, n//2 - 2)] + [(s2, t_vars[i]) for i in range(n //2 -2, n//2 + 2)] + [(s3, t_vars[i]) for i in range(n//2 + 2, n+1)]
 
         for src, dst in link_tuples:
             self.addLink(src, dst, port2=1)
