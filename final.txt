@@ -1,0 +1,31 @@
+*** Plotting network topology to gConfigThreeRoadms.png
+*** t1.turn_on <ch6:191.60THz> on port 3
+*** t1 receiving <ch6:191.60THz> at port 3: Success! gOSNR: 23.311757 dB OSNR: 24.781860 dB
+*** t2.turn_on <ch12:191.90THz> on port 4
+*** t2 receiving <ch12:191.90THz> at port 4: Success! gOSNR: 23.306912 dB OSNR: 24.775066 dB
+*** t3.turn_on <ch18:192.20THz> on port 5
+*** t3 receiving <ch18:192.20THz> at port 5: Success! gOSNR: 23.302073 dB OSNR: 24.768281 dB
+*** t4.turn_on <ch24:192.50THz> on port 6
+*** t4 receiving <ch24:192.50THz> at port 6: Success! gOSNR: 23.297239 dB OSNR: 24.761508 dB
+*** t5.turn_on <ch30:192.80THz> on port 7
+*** t5 receiving <ch30:192.80THz> at port 7: Success! gOSNR: 23.292410 dB OSNR: 24.754744 dB
+*** t6.turn_on <ch36:193.10THz> on port 8
+*** t6 receiving <ch36:193.10THz> at port 8: Success! gOSNR: 23.287587 dB OSNR: 24.747992 dB
+*** t7.turn_on <ch42:193.40THz> on port 9
+*** t7 receiving <ch42:193.40THz> at port 9: Success! gOSNR: 23.282769 dB OSNR: 24.741250 dB
+*** t8.turn_on <ch48:193.70THz> on port 10
+*** t8 receiving <ch48:193.70THz> at port 10: Success! gOSNR: 23.277957 dB OSNR: 24.734518 dB
+*** t9.turn_on <ch54:194.00THz> on port 11
+*** t9 receiving <ch54:194.00THz> at port 11: Success! gOSNR: 23.273149 dB OSNR: 24.727797 dB
+*** t10.turn_on <ch60:194.30THz> on port 12
+*** t10 receiving <ch60:194.30THz> at port 12: Success! gOSNR: 23.268347 dB OSNR: 24.721086 dB
+*** t11.turn_on <ch66:194.60THz> on port 13
+*** t11 receiving <ch66:194.60THz> at port 13: Success! gOSNR: 23.263551 dB OSNR: 24.714385 dB
+*** t12.turn_on <ch72:194.90THz> on port 14
+*** t12 receiving <ch72:194.90THz> at port 14: Success! gOSNR: 23.258760 dB OSNR: 24.707695 dB
+*** t13.turn_on <ch78:195.20THz> on port 15
+*** t13 receiving <ch78:195.20THz> at port 15: Success! gOSNR: 23.253974 dB OSNR: 24.701015 dB
+*** t14.turn_on <ch84:195.50THz> on port 16
+*** t14 receiving <ch84:195.50THz> at port 16: Success! gOSNR: 23.249193 dB OSNR: 24.694345 dB
+*** t15.turn_on <ch90:195.80THz> on port 17
+*** t15 receiving <ch90:195.80THz> at port 17: Success! gOSNR: 23.244417 dB OSNR: 24.687686 dB
