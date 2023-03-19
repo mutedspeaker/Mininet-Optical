@@ -270,4 +270,3 @@ if __name__ == '__main__':
 	    restServer.stop()
 	    net.stop()
 	    
-	    break
