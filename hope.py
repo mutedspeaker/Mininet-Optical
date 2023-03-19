@@ -158,8 +158,7 @@ class SingleROADMTopo(Topo):
     def build(self):
         h1, h2, h3= [self.addHost(f'h{i}') for i in range(1, 4)]
         s = s1, s2, s3 = [self.addSwitch(f's{i}') for i in range(1, 4)]
-#         t = [self.addSwitch(f't{i}', cls=Terminal, transceivers=[('tx1', 0*dBm, 'C')], monitor_mode='in') for i in range(1,n+1)]
-        
+
         # Generate variables t1 to tn and assign them to a list
         t_vars = [f"t{i}" for i in range(1, n+1)]
 
@@ -177,24 +176,27 @@ class SingleROADMTopo(Topo):
         # Add links
         for src, dst in [(h1, s1), (h2, s2), (h3, s3)]:
             self.addLink(src, dst)
-        print(n)
-        for src, dst in [(s1, t_vars[i]) for i in range(1, n//2 - 2)] + [(s2, t_vars[i]) for i in range(n //2 -2, n//2 + 2)] + [(s3, t_vars[i]) for i in range(n//2 + 2, n+1)]:
+        
+        for src, dst in [(s1, t_vars[i]) for i in range(n//2 - 2)] + [(s2, t_vars[i]) for i in range(n //2 -2, n//2 + 2)] + [(s3, t_vars[i]) for i in range(n//2 + 2, n)]:
+                print(src, dst)
+        
+        for src, dst in [(s1, t_vars[i]) for i in range(n//2 - 2)] + [(s2, t_vars[i]) for i in range(n //2 -2, n//2 + 2)] + [(s3, t_vars[i]) for i in range(n//2 + 2, n)]:
             self.addLink(src, dst, port2=1)
         
-        link_tuples = [(s1, t_vars[i]) for i in range(1, n//2 - 2)] + [(s2, t_vars[i]) for i in range(n //2 -2, n//2 + 2)] + [(s3, t_vars[i]) for i in range(n//2 + 2, n+1)]
+        link_tuples = [(s1, t_vars[i]) for i in range(n//2 - 2)] + [(s2, t_vars[i]) for i in range(n //2 -2, n//2 + 2)] + [(s3, t_vars[i]) for i in range(n//2 + 2, n)]
 
         for src, dst in link_tuples:
             self.addLink(src, dst, port2=1)
 
 
         # Connections between routers and terminals
-        for i in range(1, n//2 - 2):
+        for i in range(n//2 - 2):
             self.addLink(r1, t_vars[i], cls=OpticalLink, port1=i+2, port2=i+2, boost1=boost, spans=spans)
 
         for i in range(n //2 -2, n//2 + 2):
             self.addLink(r2, t_vars[i], cls=OpticalLink, port1=i+2, port2=i+2, boost1=boost, spans=spans)
 
-        for i in range(n//2 + 2, n+1):
+        for i in range(n//2 + 2, n):
             self.addLink(r3, t_vars[i], cls=OpticalLink, port1=i+2, port2=i+2, boost1=boost, spans=spans)
 
         # Adding links between r1 and r2
