@@ -120,7 +120,6 @@ class SingleROADMTopo(Topo):
 	 # Add links
         for src, dst in [(h1, s1), (h2, s2), (h3, s3)]:
 	        self.addLink(src, dst)
-            
 #         for src in s:
 #             for dst in t:
 #                 self.addLink(src, dst, port2=1)
@@ -147,7 +146,7 @@ class SingleROADMTopo(Topo):
 
 
 # Debugging: Plot network graph
-def plotNet(net, outfile="gConfigThreeRoadms.png", directed=False, layout='circo',
+def plotNet(net, outfile="gConfignRoadms.png", directed=False, layout='circo',
             colorMap=None, linksPerPair=5):
     """Plot network graph to outfile
        linksPerPair: max # of links between a pair of nodes to plot, or
@@ -247,4 +246,3 @@ if __name__ == '__main__':
     test(net) if 'test' in argv else CLI(net)
     restServer.stop()
     net.stop()
-    

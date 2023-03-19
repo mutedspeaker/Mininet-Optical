@@ -109,6 +109,7 @@ class SingleROADMTopo(Topo):
 	 # Add links
         for src, dst in [(h1, s1), (h2, s2), (h3, s3)]:
 	        self.addLink(src, dst)
+	        
         for src, dst in [(s1, t1),(s1, t2),(s1, t3),(s1, t4),(s1, t5), (s2, t6),(s2, t7),(s2, t8),(s2, t9),(s2, t10), (s3, t11), (s3, t12), (s3, t13), (s3, t14), (s3, t15)]:
 	        self.addLink(src, dst, port2=1)
 
