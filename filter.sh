@@ -15,4 +15,5 @@ awk '/^(*** t)[1-9][1-9]?( )/  {print substr($0,5)}'  output.txt > final.txt
 
 # grep -o -E 't[0-9]+|ch[0-9]+:[0-9]+.[0-9]+THz|[0-9]+\.[0-9]+ dB' final.txt | awk '{ORS=NR%5?" ":"\n"; print}' | awk '{print $1, $2, substr($3, 3), $4, $5}' > finally.txt
 
-awk '/^t[0-9]+/{gsub(/[<>:]/,"",$3); printf "%s %s %s %s %s\n", $1, $3, substr($3,4,length($3)-7), $6, $8}' final.txt > output.csv
+awk '/^t[0-9]+/{gsub(/[<>:]/,"",$3); printf "%s %s %s %s %s\n", $1, $3, substr($3,4,length($3)-7), $6, $8}' final.txt > gg.txt
+
