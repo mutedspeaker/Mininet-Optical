@@ -11,10 +11,18 @@ with open(input_file, "r") as f_in, open(output_file, "w", newline="") as f_out:
         # extract fields from line
         fields = line.strip().split()
         t = fields[0]
-        ch = int(fields[2][3:]) # extract number from ch field
-        freq = float(fields[2][4:-3]) # extract frequency from ch field
-        gOSNR = float(fields[7])
-        OSNR = float(fields[9])
+        try:
+        	ch = float(fields[2][3:5]) # extract number from ch field
+        except:
+        	ch = float(fields[2][3:4])
+        try:
+        	freq = float(fields[2][5:-4]) # extract frequency from ch field
+
+        except:
+        	freq = float(fields[2][6:-4]) # extract frequency from ch field
+        #freq = float(fields[2][5:-4]) # extract frequency from ch field
+        gOSNR = float(fields[8])
+        OSNR = float(fields[11])
         
         # write fields to CSV
         writer.writerow([t, ch, freq, gOSNR, OSNR])
