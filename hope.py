@@ -37,15 +37,12 @@ def end():
 				    ||
 				    h2
 '''
-def bash_text(n):
+def bash_text(n, z):
     
     a = ''
     a += "set -e\n"
     a += 'url="localhost:8080";\n'
-#     a += 'declare -a t=() # declare an array\n'
-#     a += 'for ((i=0;i<n;i++)); do\n'
-#     a += '    t[i]=$url\n'
-#     a += 'done\n'
+
     g = ''
     for i in range(1,n+1):
         g += f"t{i}=$url; "
@@ -65,13 +62,13 @@ def bash_text(n):
         a += f'$curl "$r{i}/reset?node=r{i}"\n'
 
     a += '\necho "* Configuring ROADM to connect r1,r2 and 4r3 to the respective terminals: "\n'
-
-    for i in range(1,n//2 - 2):
-        a += f'$curl "$r1/connect?node=r1&port1={i+2}&port2={i+2}&channels={i}"\n'
-    for i in range(n //2 -2,n//2 + 2):
-        a += f'$curl "$r2/connect?node=r2&port1={i+2}&port2={i+2}&channels={i}"\n'
-    for i in range(n//2 + 2,n+1):
-        a += f'$curl "$r3/connect?node=r3&port1={i+2}&port2={i+2}&channels={i}"\n'
+    
+    for i in range(n//2 - z//2):
+        a += f'$curl "$r1/connect?node=r1&port1={i+3}&port2={i+3}&channels={i+1}"\n'
+    for i in range(n //2 - z//2,n//2 + z//2):
+        a += f'$curl "$r2/connect?node=r2&port1={i+3}&port2={i+3}&channels={i+1}"\n'
+    for i in range(n//2 + z//2, n):
+        a += f'$curl "$r3/connect?node=r3&port1={i+3}&port2={i+3}&channels={i+1}"\n'
 
     a += '\n$curl "$r1/connect?node=r1&port1=300&port2=300&channels=40"\n'
     a += '$curl "$r2/connect?node=r2&port1=310&port2=310&channels=40"\n'
@@ -113,57 +110,18 @@ def bash_creator(a):
     f= open("bash.sh","w+")
     f.write(a)
     f.close()
-  
-# class SingleROADMTopo(Topo):
-#     def build(self):
-#         h1, h2, h3= [self.addHost(f'h{i}') for i in range(1, 4)]
-#         s = s1, s2, s3 = [self.addSwitch(f's{i}') for i in range(1, 4)]
-#         t = [self.addSwitch(f't{i}', cls=Terminal, transceivers=[('tx1', 0*dBm, 'C')], monitor_mode='in') for i in range(n)]
-#         r1, r2, r3 = [self.addSwitch(f'r{i}', cls=ROADM) for i in range(1, 4)]
-	
-	
-# 	# Wdm Links:
-#         boost = ('boost', {'target_gain': 3.0*dB})
-#         amp1 = ('amp1', {'target_gain': 50*.22*dB})
-#         amp2 = ('amp2', {'target_gain': 50*.22*dB})
-#         spans = [50*km, amp1, 50*km, amp2]
-# 	 # Add links
-#         for src, dst in [(h1, s1), (h2, s2), (h3, s3)]:
-# 	        self.addLink(src, dst)
-# #         for src in s:
-# #             for dst in t:
-# #                 self.addLink(src, dst, port2=1)
-#         for src, dst in [(s1, t[i]) for i in range(n//2 - 2)] + [(s2, t[i]) for i in range(n //2 -2, n//2 + 2)] + [(s3, t[i]) for i in range(n//2 + 2, n)]:
-#             self.addLink(src, dst, port2=1)
 
-#     # Connections between routers and terminals
-#         for i in range(n//2 - 2):
-#             self.addLink(r1, t[i], cls=OpticalLink, port1=i+3, port2=i+3, boost1=boost, spans=spans)
-
-#         for i in range(n //2 -2, n//2 + 2):
-#             self.addLink(r2, t[i], cls=OpticalLink, port1=i+3, port2=i+3, boost1=boost, spans=spans)
-
-#         for i in range(n//2 + 2, n):
-#             self.addLink(r3, t[i], cls=OpticalLink, port1=i+3, port2=i+3, boost1=boost, spans=spans)
-
-# 	# Adding links between r1 and r2
-#         self.addLink(r1, r2, cls=OpticalLink, port1=300, port2=300, boost1=boost, spans=spans)
-#         self.addLink(r2, r1, cls=OpticalLink, port1=310, port2=310, boost1=boost, spans=spans)
-	
-# 	# Adding links between r2 and r3
-#         self.addLink(r2, r3, cls=OpticalLink, port1=400, port2=400, boost1=boost, spans=spans)
-#         self.addLink(r3, r2, cls=OpticalLink, port1=410, port2=410, boost1=boost, spans=spans)
 
 class SingleROADMTopo(Topo):
     def build(self):
         h1, h2, h3= [self.addHost(f'h{i}') for i in range(1, 4)]
-        s = s1, s2, s3 = [self.addSwitch(f's{i}') for i in range(1, 4)]
-#         t = [self.addSwitch(f't{i}', cls=Terminal, transceivers=[('tx1', 0*dBm, 'C')], monitor_mode='in') for i in range(1,n+1)]
         
-        # Generate variables t1 to tn and assign them to a list
+        s1, s2, s3 = [self.addSwitch(f's{i}') for i in range(1, 4)]
+
         t_vars = [f"t{i}" for i in range(1, n+1)]
 
-        # Use a list comprehension to create the switches and assign them to the t_vars
+        # Use a list comprehension to create the switches and assign them to the t_vars:
+        
         t_vars = [self.addSwitch(t_var, cls=Terminal, transceivers=[('tx1', 0*dBm, 'C')], monitor_mode='in') for t_var in t_vars]
         
         r1, r2, r3 = [self.addSwitch(f'r{i}', cls=ROADM) for i in range(1, 4)]
@@ -174,22 +132,16 @@ class SingleROADMTopo(Topo):
         amp2 = ('amp2', {'target_gain': 50*.22*dB})
         spans = [50*km, amp1, 50*km, amp2]
         
+        
         # Add links
         for src, dst in [(h1, s1), (h2, s2), (h3, s3)]:
             self.addLink(src, dst)
 
-#         for src, dst in [(s1, t[i]) for i in range(1, n//2 - 2)] + [(s2, t[i]) for i in range(n //2 -2, n//2 + 2)] + [(s3, t[i]) for i in range(n//2 + 2, n+1)]:
-#             self.addLink(src, dst, port2=1)
-        
-#         link_tuples = [(s1, t_vars[i]) for i in range(5)] + [(s2, t_vars[i]) for i in range(5, 10)] + [(s3, t_vars[i]) for i in range(10, 15)]
-
-#         for src, dst in link_tuples:
-#             self.addLink(src, dst, port2=1)
         link_list = []
         for i in range(n):
-            if i < n//2 - 2:
+            if i < n//2 - z//2:
                 link_list.append((s1, t_vars[i]))
-            elif i < n//2 +2:
+            elif i < n//2 + z//2:
                 link_list.append((s2, t_vars[i]))
             else:
                 link_list.append((s3, t_vars[i]))
@@ -201,14 +153,14 @@ class SingleROADMTopo(Topo):
 
 
         # Connections between routers and terminals
-        for i in range(1, n//2 - 2):
-            self.addLink(r1, t_vars[i-1], cls=OpticalLink, port1=i+2, port2=i+2, boost1=boost, spans=spans)
+        for i in range(n//2 - z//2):
+            self.addLink(r1, t_vars[i], cls=OpticalLink, port1=i+3, port2=i+3, boost1=boost, spans=spans)
 
-        for i in range(n //2 -2, n//2 + 2):
-            self.addLink(r2, t_vars[i-1], cls=OpticalLink, port1=i+2, port2=i+2, boost1=boost, spans=spans)
+        for i in range(n //2 - z//2, n//2 + z//2):
+            self.addLink(r2, t_vars[i], cls=OpticalLink, port1=i+3, port2=i+3, boost1=boost, spans=spans)
 
-        for i in range(n//2 + 2, n+1):
-            self.addLink(r3, t_vars[i-1], cls=OpticalLink, port1=i+2, port2=i+2, boost1=boost, spans=spans)
+        for i in range(n//2 + z//2, n):
+            self.addLink(r3, t_vars[i], cls=OpticalLink, port1=i+3, port2=i+3, boost1=boost, spans=spans)
 
         # Adding links between r1 and r2
         self.addLink(r1, r2, cls=OpticalLink, port1=300, port2=300, boost1=boost, spans=spans)
@@ -251,6 +203,7 @@ def plotNet(net, outfile="gConfignRoadms.png", directed=False, layout='circo',
         port1, port2 = node1.ports[intf1], node2.ports[intf2]
         linkcount[node1,node2] = linkcount.get((node1, node2),0) + 1
         if linksPerPair is not None and linkcount[node1,node2] > linksPerPair:
+       
             continue
         g.add_edge(node1.name, node2.name,
                    headlabel=f' {node2}:{port2} ',
@@ -275,48 +228,39 @@ def test(net):
     assert net.ping(hosts, timeout=.5) == 100
 
 if __name__ == '__main__':
+
+    for j in range(10, 16):
+	    total_terminals = j
+	    customer_channels = 4
     
-    # for i in [20, 40]:
-    # 	n = i
-    # 	cleanup()
-    # 	setLogLevel('info')
-
-    # 	topo = SingleROADMTopo()
-    # 	net = Mininet(topo=topo, switch=OVSBridge, controller=None)
-    # 	restServer = RestServer(net)
-    # 	net.start()
-    # 	restServer.start()
-    # 	a = bash_text(i)
-    # 	bash_creator(a)	
-    # 	st = os.stat('bash.sh')
-    # 	os.chmod('bash.sh',st.st_mode | stat.S_IEXEC)  
-    # 	script_name = 'bash.sh'
-    # 	script_path = '/home/ojas/Desktop/mycode/' + script_name
-    # 	subprocess.call(['gnome-terminal','--', 'bash', '-c','./' + script_name + '; $SHELL;'])
-    # 	plotNet(net)
-    # 	test(net) if 'test' in argv else CLI(net)
-    # 	restServer.stop()
-    # 	net.stop()
-
-    for i in range(10, 90):
-	    n = 40
-	    i = 40
+	    n = total_terminals
+	    z = customer_channels
+	    
 	    cleanup()
 	    setLogLevel('info')
-
 	    topo = SingleROADMTopo()
 	    net = Mininet(topo=topo, switch=OVSBridge, controller=None)
 	    restServer = RestServer(net)
 	    net.start()
 	    restServer.start()
-	    a = bash_text(i)
+	    
+	    a = bash_text(int(total_terminals), int(customer_channels))
 	    bash_creator(a)	
+	    
 	    st = os.stat('bash.sh')
-	    os.chmod('bash.sh',st.st_mode | stat.S_IEXEC)  
+	    
+	    # Give executable permissions
+	    os.chmod('bash.sh',st.st_mode | stat.S_IEXEC) 
+	     
 	    script_name = 'bash.sh'
+	    
+	    # Call the bash.sh on a different platform
 	    script_path = '/home/ojas/Desktop/mycode/' + script_name
-	    subprocess.call(['gnome-terminal','--', 'bash', '-c','./' + script_name + '; $SHELL;'])
+	    subprocess.call(['gnome-terminal','--', 'bash', '-c','./' + script_name + '; $SHELL; exit;'])
+	    
+	    
 	    plotNet(net)
 	    test(net) if 'test' in argv else CLI(net)
+	    
 	    restServer.stop()
 	    net.stop()
