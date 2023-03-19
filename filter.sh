@@ -1,5 +1,5 @@
 # regex_part = '\*\*\* t'
-# awk '/^(*** t)[1-9][1-9]?( )/  {print substr($0,5)}'  output.txt
+awk '/^(*** t)[1-9][1-9]?( )/  {print substr($0,5)}'  output.txt > final.txt
 #!/bin/bash
 
 # while read line; do
@@ -13,4 +13,4 @@
 #   fi
 # done < output.txt
 
-grep -o -E 't[0-9]+|ch[0-9]+:[0-9]+.[0-9]+THz|[0-9]+\.[0-9]+ dB' textfile.txt | awk '{ORS=NR%5?" ":"\n"; print}' | awk '{print $1, $2, substr($3, 3), $4, $5}'
+grep -o -E 't[0-9]+|ch[0-9]+:[0-9]+.[0-9]+THz|[0-9]+\.[0-9]+ dB' final.txt | awk '{ORS=NR%5?" ":"\n"; print}' | awk '{print $1, $2, substr($3, 3), $4, $5}' > finally.txt
