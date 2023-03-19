@@ -42,55 +42,64 @@ def bash_text(n):
     a = ''
     a += "set -e\n"
     a += 'url="localhost:8080";\n'
-    a += 'declare -a t=() # declare an array\n'
-    a += 'for ((i=0;i<n;i++)); do\n'
-    a += '    t[i]=$url\n'
-    a += 'done\n'
-	
-    a += 'r1=$url; r2=$url; r3=$url\n'
+#     a += 'declare -a t=() # declare an array\n'
+#     a += 'for ((i=0;i<n;i++)); do\n'
+#     a += '    t[i]=$url\n'
+#     a += 'done\n'
+    g = ''
+    for i in range(1,n+1):
+        g += f"t{i}=$url; "
+    a += g 
+    
+    a += '\nr1=$url; r2=$url; r3=$url\n'
     a += 'curl="curl -s"\n'
-    a += 'echo "* Configuring terminals in threeRoadms.py network"\n'
+    
+    a += '\necho "* Configuring terminals in nRoadms.py network"\n'
+    for i in range(1,n + 1):
+        a += f'$curl "$t{i}/connect?node=t{i}&ethPort={i+2}&wdmPort={i+2}&channel={i*6}"\n'
+    
 
-#     for i in range(n):
-#         a += f'$curl "$t{i}/connect?node=t{i}&ethPort={i+2}&wdmPort={i+2}&channel={i*6}"\n'
-    a += '''# loop through the array and call the curl command
-for ((i=0;i<n;i++)); do
-    $curl "${t[i]}/connect?node=${t[i]}&ethPort=$((i+3))&wdmPort=$((i+3))&channel=$((i))"
-done\n'''
-
-    a += 'echo "* Resetting ROADM"\n'
+    a += '\necho "* Resetting ROADM"\n'
 
     for i in range(1,4):
         a += f'$curl "$r{i}/reset?node=r{i}"\n'
 
-    a += 'echo "* Configuring ROADM to forward ch1 from t1 to t2"\n'
+    a += '\necho "* Configuring ROADM to connect r1,r2 and 4r3 to the respective terminals: "\n'
 
-    for i in range(n//2 - 2):
-        a += f'$curl "$r1/connect?node=r1&port1={i+3}&port2={i+3}&channels={i+1}"\n'
+    for i in range(1,n//2 - 2):
+        a += f'$curl "$r1/connect?node=r1&port1={i+2}&port2={i+2}&channels={i*6}"\n'
     for i in range(n //2 -2,n//2 + 2):
-        a += f'$curl "$r2/connect?node=r2&port1={i+3}&port2={i+3}&channels={i+1}"\n'
-    for i in range(n//2 + 2,n):
-        a += f'$curl "$r3/connect?node=r3&port1={i+3}&port2={i+3}&channels={i+1}"\n'
+        a += f'$curl "$r2/connect?node=r2&port1={i+2}&port2={i+2}&channels={i*6}"\n'
+    for i in range(n//2 + 2,n+1):
+        a += f'$curl "$r3/connect?node=r3&port1={i+2}&port2={i+2}&channels={i*6}"\n'
 
-    a += '$curl "$r1/connect?node=r1&port1=300&port2=300&channels=40"\n'
+    a += '\n$curl "$r1/connect?node=r1&port1=300&port2=300&channels=40"\n'
     a += '$curl "$r2/connect?node=r2&port1=310&port2=310&channels=40"\n'
     a += '$curl "$r2/connect?node=r2&port1=400&port2=400&channels=50"\n'
     a += '$curl "$r3/connect?node=r3&port1=410&port2=410&channels=50"\n'
 
-    a += '''# turn on the roadm
-for ((i=0;i<n;i++)); do
-    curl "${t[i]}/turn_on?node=${t[i]}"
-done\n'''
-
-    a += '''# Monitoring signals before endpoints
-for ((i=0;i<n;i++)); do
-    tname="${t[i]}"
+    a += '''\n# turn on the roadm\n'''
+    result = ""
+    for i in range(1, n+1):
+        command = '$curl "$t{}/turn_on?node=t{}"'.format(i, i)
+        result += command + "\n"
+    a += result
+    
+    result = ''
+    for i in range(1, n+1):
+        result += f't{i} '
+    a += f"\nfor tname in {result}; do"
+    a+= '''
     url=${!tname}
     $curl "$url/monitor?monitor=$tname-monitor"
-done\n'''
+done\n
+    '''
 
-    a += '''for ((i=0;i<n;i++)); do
-    tname=${t[i]}
+    result = ''
+    for i in range(1, n+1):
+        result += f't{i} '
+    a += f"\nfor tname in {result}; do"
+    a+= '''
     url=${!tname}
     echo "* $tname"
     $curl "$url/monitor?monitor=$tname-monitor"
@@ -99,6 +108,7 @@ done\n'''
     a += 'echo "* 007 OUT!"\n'
     
     return a
+
 def bash_creator(a):
     f= open("bash.sh","w+")
     f.write(a)
