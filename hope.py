@@ -37,7 +37,7 @@ def end():
 				    ||
 				    h2
 '''
-def bash_text(n, z):
+def bash_text(n, z, cm):
     
     a = ''
     a += "set -e\n"
@@ -51,24 +51,28 @@ def bash_text(n, z):
     a += '\nr1=$url; r2=$url; r3=$url\n'
     a += 'curl="curl -s"\n'
     
-    a += '\necho "* Configuring terminals in nRoadms.py network"\n'
+    #a += '\necho "* Configuring terminals in nRoadms.py network"\n'
     for i in range(1,n + 1):
-        a += f'$curl "$t{i}/connect?node=t{i}&ethPort={i+2}&wdmPort={i+2}&channel={i}"\n'
+       ans = (i)*cm
+       a += f'$curl "$t{i}/connect?node=t{i}&ethPort={i+2}&wdmPort={i+2}&channel={ans}"\n'
     
 
-    a += '\necho "* Resetting ROADM"\n'
+    #a += '\necho "* Resetting ROADM"\n'
 
     for i in range(1,4):
-        a += f'$curl "$r{i}/reset?node=r{i}"\n'
+       a += f'$curl "$r{i}/reset?node=r{i}"\n'
 
-    a += '\necho "* Configuring ROADM to connect r1,r2 and 4r3 to the respective terminals: "\n'
+    #a += '\necho "* Configuring ROADM to connect r1,r2 and 4r3 to the respective terminals: "\n'
     
     for i in range(n//2 - z//2):
-        a += f'$curl "$r1/connect?node=r1&port1={i+3}&port2={i+3}&channels={i+1}"\n'
+       ans = (i+1)*cm
+       a += f'$curl "$r1/connect?node=r1&port1={i+3}&port2={i+3}&channels={ans}"\n'
     for i in range(n //2 - z//2,n//2 + z//2):
-        a += f'$curl "$r2/connect?node=r2&port1={i+3}&port2={i+3}&channels={i+1}"\n'
+       ans = (i+1)*cm
+       a += f'$curl "$r2/connect?node=r2&port1={i+3}&port2={i+3}&channels={ans}"\n'
     for i in range(n//2 + z//2, n):
-        a += f'$curl "$r3/connect?node=r3&port1={i+3}&port2={i+3}&channels={i+1}"\n'
+       ans = (i+1)*cm
+       a += f'$curl "$r3/connect?node=r3&port1={i+3}&port2={i+3}&channels={ans}"\n'
 
     a += '\n$curl "$r1/connect?node=r1&port1=300&port2=300&channels=40"\n'
     a += '$curl "$r2/connect?node=r2&port1=310&port2=310&channels=40"\n'
@@ -98,11 +102,11 @@ done\n
     a += f"\nfor tname in {result}; do"
     a+= '''
     url=${!tname}
-    echo "* $tname"
+    #echo "* $tname"
     $curl "$url/monitor?monitor=$tname-monitor"
 done\n'''
 
-    a += 'echo "* 007 OUT!"\n'
+    #a += 'echo "* 007 OUT!"\n'
     
     return a
 
@@ -128,9 +132,9 @@ class SingleROADMTopo(Topo):
         
         # Wdm Links:
         boost = ('boost', {'target_gain': 3.0*dB})
-        amp1 = ('amp1', {'target_gain': 50*.22*dB})
-        amp2 = ('amp2', {'target_gain': 50*.22*dB})
-        spans = [50*km, amp1, 50*km, amp2]
+        amp1 = ('amp1', {'target_gain': 25*.22*dB})
+        amp2 = ('amp2', {'target_gain': 25*.22*dB})
+        spans = [25*km, amp1, 25*km, amp2]
         
         
         # Add links
@@ -145,8 +149,6 @@ class SingleROADMTopo(Topo):
                 link_list.append((s2, t_vars[i]))
             else:
                 link_list.append((s3, t_vars[i]))
-                
-        print(link_list)
 
         for src, dst in link_list:
             self.addLink(src, dst, port2=1)
@@ -210,7 +212,7 @@ def plotNet(net, outfile="gConfignRoadms.png", directed=False, layout='circo',
                    taillabel=f' {node1}:{port1} ',
                    labelfontsize=10, labelfontname='helvetica bold',
                    penwidth=2)
-    print("*** Plotting network topology to", outfile)
+    #print("*** Plotting network topology to", outfile)
     g.layout()
     g.draw(outfile)
 
@@ -232,19 +234,22 @@ if __name__ == '__main__':
     for j in range(10, 16):
 	    total_terminals = j
 	    customer_channels = 4
+	    channel_multiplier = 90 // total_terminals
+	    cm = channel_multiplier
     
 	    n = total_terminals
 	    z = customer_channels
 	    
 	    cleanup()
 	    setLogLevel('info')
+	    
 	    topo = SingleROADMTopo()
 	    net = Mininet(topo=topo, switch=OVSBridge, controller=None)
 	    restServer = RestServer(net)
 	    net.start()
 	    restServer.start()
 	    
-	    a = bash_text(int(total_terminals), int(customer_channels))
+	    a = bash_text(int(total_terminals), int(customer_channels), channel_multiplier)
 	    bash_creator(a)	
 	    
 	    st = os.stat('bash.sh')
@@ -264,3 +269,5 @@ if __name__ == '__main__':
 	    
 	    restServer.stop()
 	    net.stop()
+	    
+	    break
