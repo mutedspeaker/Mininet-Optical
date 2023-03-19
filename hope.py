@@ -298,24 +298,25 @@ if __name__ == '__main__':
     # 	restServer.stop()
     # 	net.stop()
 
-    n = 40
-    i = 40
-    cleanup()
-    setLogLevel('info')
+    for i in range(10, 90):
+	    n = 40
+	    i = 40
+	    cleanup()
+	    setLogLevel('info')
 
-    topo = SingleROADMTopo()
-    net = Mininet(topo=topo, switch=OVSBridge, controller=None)
-    restServer = RestServer(net)
-    net.start()
-    restServer.start()
-    a = bash_text(i)
-    bash_creator(a)	
-    st = os.stat('bash.sh')
-    os.chmod('bash.sh',st.st_mode | stat.S_IEXEC)  
-    script_name = 'bash.sh'
-    script_path = '/home/ojas/Desktop/mycode/' + script_name
-    subprocess.call(['gnome-terminal','--', 'bash', '-c','./' + script_name + '; $SHELL;'])
-    plotNet(net)
-    test(net) if 'test' in argv else CLI(net)
-    restServer.stop()
-    net.stop()
+	    topo = SingleROADMTopo()
+	    net = Mininet(topo=topo, switch=OVSBridge, controller=None)
+	    restServer = RestServer(net)
+	    net.start()
+	    restServer.start()
+	    a = bash_text(i)
+	    bash_creator(a)	
+	    st = os.stat('bash.sh')
+	    os.chmod('bash.sh',st.st_mode | stat.S_IEXEC)  
+	    script_name = 'bash.sh'
+	    script_path = '/home/ojas/Desktop/mycode/' + script_name
+	    subprocess.call(['gnome-terminal','--', 'bash', '-c','./' + script_name + '; $SHELL;'])
+	    plotNet(net)
+	    test(net) if 'test' in argv else CLI(net)
+	    restServer.stop()
+	    net.stop()
