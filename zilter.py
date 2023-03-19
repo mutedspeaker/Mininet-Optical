@@ -14,7 +14,7 @@ with open(input_file, "r") as f_in, open(output_file, "w", newline="") as f_out:
         try:
         	ch = int(fields[2][3:5]) # extract number from ch field
         except:
-        	ch = float(fields[2][3:4])
+        	ch = int(fields[2][3:4])
         try:
         	freq = float(fields[2][5:-4]) # extract frequency from ch field
 
