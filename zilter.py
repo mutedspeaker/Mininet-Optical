@@ -3,7 +3,7 @@ from decimal import Decimal, getcontext
 input_file = "final.txt"
 output_file = "data.csv"
 getcontext().prec = 10
-with open(input_file, "r") as f_in, open(output_file, "w", newline="") as f_out:
+with open(input_file, "r") as f_in, open(output_file, "a", newline="") as f_out:
     writer = csv.writer(f_out)
     writer.writerow(["ch", "gOSNR", "OSNR"]) # write header row
     

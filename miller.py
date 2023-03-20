@@ -8,12 +8,20 @@ getcontext().prec = 10
 with open(input_file, "r") as f_in, open(output_file, "a", newline="") as f_out:
     reader = csv.reader(f_in)
     writer = csv.writer(f_out)
+    writer.writerow(["ch", "gOSNR", "OSNR"]) # write header row
     
     # check if any channel is missing from 1 to 90
     existing_ch = set()
     for row in reader:
-        ch = int(row[2][3:5] if len(row[2]) == 5 else row[2][3:4])
-        existing_ch.add(ch)
+        fields = row.strip().split()
+        try:
+                ch = int(fields[2][3:5])
+                existing_ch.add(ch)
+        except:
+                ch = int(fields[2][3:4])
+                existing_ch.add(ch)
+        #ch = int(row[2][3:5] if len(row[2]) == 5 else row[2][3:4])
+        
     missing_ch = sorted(set(range(1, 91)).difference(existing_ch))
     
     # append missing channels to the output file with gOSNR and OSNR as 0
