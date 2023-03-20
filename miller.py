@@ -2,37 +2,46 @@ import csv
 from decimal import Decimal, getcontext
 
 input_file = "final.txt"
-output_file = "output.csv"
+output_file = "data.csv"
 getcontext().prec = 10
 
-with open(input_file, "r") as f_in, open(output_file, "a", newline="") as f_out:
-    reader = csv.reader(f_in)
+with open(input_file, "r") as f_in, open(output_file, "w", newline="") as f_out:
     writer = csv.writer(f_out)
     writer.writerow(["ch", "gOSNR", "OSNR"]) # write header row
     
-    # check if any channel is missing from 1 to 90
-    existing_ch = set()
-    for row in reader:
-        fields = row.strip().split()
+    prev_ch = None # to keep track of previous channel value
+    missing_channels = [] # to store missing channels
+    
+    for line in f_in:
+        # extract fields from line
+        fields = line.strip().split()
+        t = fields[0]
         try:
-                ch = int(fields[2][3:5])
-                existing_ch.add(ch)
+            ch = int(fields[2][3:5])
         except:
-                ch = int(fields[2][3:4])
-                existing_ch.add(ch)
-        #ch = int(row[2][3:5] if len(row[2]) == 5 else row[2][3:4])
+            ch = int(fields[2][3:4])
+        gOSNR = Decimal(fields[8])
+        OSNR = Decimal(fields[11])
         
-    missing_ch = sorted(set(range(1, 91)).difference(existing_ch))
-    
-    # append missing channels to the output file with gOSNR and OSNR as 0
-    for ch in missing_ch:
-        writer.writerow([ch, Decimal(0), Decimal(0)])
-    
-    # write existing fields to CSV
-    f_in.seek(0)  # reset file pointer to beginning
-    next(reader)  # skip header row
-    for row in reader:
-        ch = int(row[2][3:5] if len(row[2]) == 5 else row[2][3:4])
-        gOSNR = Decimal(row[8])
-        OSNR = Decimal(row[11])
-        writer.writerow([ch, gOSNR, OSNR])
+        if t == 't1':
+            if prev_ch is not None and ch != prev_ch + 1:
+                # add missing channels to list
+                for i in range(prev_ch + 1, ch):
+                    missing_channels.append(i)
+            # write fields to CSV
+            writer.writerow([ch, gOSNR, OSNR])
+            prev_ch = ch # update previous channel value
+            
+            # check if last channel has been reached
+            if ch == 90:
+                # add missing channels from list with gOSNR and OSNR equal to 0
+                for i in missing_channels:
+                    writer.writerow([i, 0, 0])
+                # clear missing_channels list for next iteration
+                missing_channels = []
+                # reset prev_ch to None to start over for next t = 't1' iteration
+                prev_ch = None
+        else:
+            # write fields to CSV for t != 't1'
+            writer.writerow([ch, gOSNR, OSNR])
+            prev_ch = ch # update previous channel value
