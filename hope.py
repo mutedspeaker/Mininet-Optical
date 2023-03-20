@@ -128,13 +128,13 @@ class SingleROADMTopo(Topo):
         
         t_vars = [self.addSwitch(t_var, cls=Terminal, transceivers=[('tx1', 0*dBm, 'C')], monitor_mode='in') for t_var in t_vars]
         
-        r1, r2, r3 = [self.addSwitch(f'r{i}', cls=ROADM) for i in range(1, 4)]
+        r1, r2, r3 = [self.addSwitch(f'r{i}', cls=ROADM ) for i in range(1, 4)]
         
         # Wdm Links:
-        boost = ('boost', {'target_gain': 3.0*dB})
-        amp1 = ('amp1', {'target_gain': 70*.22*dB})
-        amp2 = ('amp2', {'target_gain': 70*.22*dB})
-        spans = [70*km, amp1, 70*km, amp2]
+        boost = ('boost', {'target_gain': 18.0*dB})
+        amp1 = ('amp1', {'target_gain': 10*.22*dB})
+        amp2 = ('amp2', {'target_gain': 10*.22*dB})
+        spans = [10*km, amp1, 10*km, amp2, 10*km, amp1, 10*km, amp2, 10*km, amp1, 10*km, amp2]
         
         
         # Add links
@@ -231,7 +231,7 @@ def test(net):
 
 if __name__ == '__main__':
 
-    for j in range(85, 90):
+    for j in range(10, 15):
 	    total_terminals = j
 	    customer_channels = 4
 	    channel_multiplier = 90 // total_terminals

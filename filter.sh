@@ -1,3 +1,3 @@
-awk '/^(*** t)[0-9][0-9]?( )/ {print substr($0,5)}' out.txt > final.txt;
+awk '/^(*** t)[0-9][0-9]?( )/ {print substr($0,5)}' output.txt > final.txt;
 
 
