@@ -5,7 +5,7 @@ output_file = "output.csv"
 getcontext().prec = 10
 with open(input_file, "r") as f_in, open(output_file, "w", newline="") as f_out:
     writer = csv.writer(f_out)
-    writer.writerow(["t", "ch", "freq", "gOSNR", "OSNR"]) # write header row
+    writer.writerow(["ch", "gOSNR", "OSNR"]) # write header row
     
     for line in f_in:
         # extract fields from line
