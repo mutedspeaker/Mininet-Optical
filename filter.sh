@@ -3,4 +3,3 @@ rm output.txt
 sudo rm bash.sh
 sudo rm gConfignRoadms.png
 python3 zilter.py
-rm final.txt
