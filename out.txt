@@ -1,0 +1,526 @@
+mininet-optical> *** r1.install_switch_rule: [3, [1]]: 3
+*** r1.install_switch_rule: [3, [1]]: 3
+*** r1.check_switch_rule: removing switch rule (3, 1): 3
+*** r1.remove_switch_rule: [3, 1]: 3
+*** r1.install_switch_rule: [4, [2]]: 4
+*** r1.install_switch_rule: [4, [2]]: 4
+*** r1.check_switch_rule: removing switch rule (4, 2): 4
+*** r1.remove_switch_rule: [4, 2]: 4
+*** r1.install_switch_rule: [5, [3]]: 5
+*** r1.install_switch_rule: [5, [3]]: 5
+*** r1.check_switch_rule: removing switch rule (5, 3): 5
+*** r1.remove_switch_rule: [5, 3]: 5
+*** r1.install_switch_rule: [6, [4]]: 6
+*** r1.install_switch_rule: [6, [4]]: 6
+*** r1.check_switch_rule: removing switch rule (6, 4): 6
+*** r1.remove_switch_rule: [6, 4]: 6
+*** r1.install_switch_rule: [7, [5]]: 7
+*** r1.install_switch_rule: [7, [5]]: 7
+*** r1.check_switch_rule: removing switch rule (7, 5): 7
+*** r1.remove_switch_rule: [7, 5]: 7
+*** r1.install_switch_rule: [8, [6]]: 8
+*** r1.install_switch_rule: [8, [6]]: 8
+*** r1.check_switch_rule: removing switch rule (8, 6): 8
+*** r1.remove_switch_rule: [8, 6]: 8
+*** r1.install_switch_rule: [9, [7]]: 9
+*** r1.install_switch_rule: [9, [7]]: 9
+*** r1.check_switch_rule: removing switch rule (9, 7): 9
+*** r1.remove_switch_rule: [9, 7]: 9
+*** r1.install_switch_rule: [10, [8]]: 10
+*** r1.install_switch_rule: [10, [8]]: 10
+*** r1.check_switch_rule: removing switch rule (10, 8): 10
+*** r1.remove_switch_rule: [10, 8]: 10
+*** r1.install_switch_rule: [11, [9]]: 11
+*** r1.install_switch_rule: [11, [9]]: 11
+*** r1.check_switch_rule: removing switch rule (11, 9): 11
+*** r1.remove_switch_rule: [11, 9]: 11
+*** r1.install_switch_rule: [12, [10]]: 12
+*** r1.install_switch_rule: [12, [10]]: 12
+*** r1.check_switch_rule: removing switch rule (12, 10): 12
+*** r1.remove_switch_rule: [12, 10]: 12
+*** r1.install_switch_rule: [13, [11]]: 13
+*** r1.install_switch_rule: [13, [11]]: 13
+*** r1.check_switch_rule: removing switch rule (13, 11): 13
+*** r1.remove_switch_rule: [13, 11]: 13
+*** r1.install_switch_rule: [14, [12]]: 14
+*** r1.install_switch_rule: [14, [12]]: 14
+*** r1.check_switch_rule: removing switch rule (14, 12): 14
+*** r1.remove_switch_rule: [14, 12]: 14
+*** r1.install_switch_rule: [15, [13]]: 15
+*** r1.install_switch_rule: [15, [13]]: 15
+*** r1.check_switch_rule: removing switch rule (15, 13): 15
+*** r1.remove_switch_rule: [15, 13]: 15
+*** r1.install_switch_rule: [16, [14]]: 16
+*** r1.install_switch_rule: [16, [14]]: 16
+*** r1.check_switch_rule: removing switch rule (16, 14): 16
+*** r1.remove_switch_rule: [16, 14]: 16
+*** r1.install_switch_rule: [17, [15]]: 17
+*** r1.install_switch_rule: [17, [15]]: 17
+*** r1.check_switch_rule: removing switch rule (17, 15): 17
+*** r1.remove_switch_rule: [17, 15]: 17
+*** r1.install_switch_rule: [18, [16]]: 18
+*** r1.install_switch_rule: [18, [16]]: 18
+*** r1.check_switch_rule: removing switch rule (18, 16): 18
+*** r1.remove_switch_rule: [18, 16]: 18
+*** r1.install_switch_rule: [19, [17]]: 19
+*** r1.install_switch_rule: [19, [17]]: 19
+*** r1.check_switch_rule: removing switch rule (19, 17): 19
+*** r1.remove_switch_rule: [19, 17]: 19
+*** r1.install_switch_rule: [20, [18]]: 20
+*** r1.install_switch_rule: [20, [18]]: 20
+*** r1.check_switch_rule: removing switch rule (20, 18): 20
+*** r1.remove_switch_rule: [20, 18]: 20
+*** r1.install_switch_rule: [21, [19]]: 21
+*** r1.install_switch_rule: [21, [19]]: 21
+*** r1.check_switch_rule: removing switch rule (21, 19): 21
+*** r1.remove_switch_rule: [21, 19]: 21
+*** r1.install_switch_rule: [22, [20]]: 22
+*** r1.install_switch_rule: [22, [20]]: 22
+*** r1.check_switch_rule: removing switch rule (22, 20): 22
+*** r1.remove_switch_rule: [22, 20]: 22
+*** r1.install_switch_rule: [23, [21]]: 23
+*** r1.install_switch_rule: [23, [21]]: 23
+*** r1.check_switch_rule: removing switch rule (23, 21): 23
+*** r1.remove_switch_rule: [23, 21]: 23
+*** r1.install_switch_rule: [24, [22]]: 24
+*** r1.install_switch_rule: [24, [22]]: 24
+*** r1.check_switch_rule: removing switch rule (24, 22): 24
+*** r1.remove_switch_rule: [24, 22]: 24
+*** r1.install_switch_rule: [25, [23]]: 25
+*** r1.install_switch_rule: [25, [23]]: 25
+*** r1.check_switch_rule: removing switch rule (25, 23): 25
+*** r1.remove_switch_rule: [25, 23]: 25
+*** r1.install_switch_rule: [26, [24]]: 26
+*** r1.install_switch_rule: [26, [24]]: 26
+*** r1.check_switch_rule: removing switch rule (26, 24): 26
+*** r1.remove_switch_rule: [26, 24]: 26
+*** r1.install_switch_rule: [27, [25]]: 27
+*** r1.install_switch_rule: [27, [25]]: 27
+*** r1.check_switch_rule: removing switch rule (27, 25): 27
+*** r1.remove_switch_rule: [27, 25]: 27
+*** r1.install_switch_rule: [28, [26]]: 28
+*** r1.install_switch_rule: [28, [26]]: 28
+*** r1.check_switch_rule: removing switch rule (28, 26): 28
+*** r1.remove_switch_rule: [28, 26]: 28
+*** r1.install_switch_rule: [29, [27]]: 29
+*** r1.install_switch_rule: [29, [27]]: 29
+*** r1.check_switch_rule: removing switch rule (29, 27): 29
+*** r1.remove_switch_rule: [29, 27]: 29
+*** r1.install_switch_rule: [30, [28]]: 30
+*** r1.install_switch_rule: [30, [28]]: 30
+*** r1.check_switch_rule: removing switch rule (30, 28): 30
+*** r1.remove_switch_rule: [30, 28]: 30
+*** r1.install_switch_rule: [31, [29]]: 31
+*** r1.install_switch_rule: [31, [29]]: 31
+*** r1.check_switch_rule: removing switch rule (31, 29): 31
+*** r1.remove_switch_rule: [31, 29]: 31
+*** r1.install_switch_rule: [32, [30]]: 32
+*** r1.install_switch_rule: [32, [30]]: 32
+*** r1.check_switch_rule: removing switch rule (32, 30): 32
+*** r1.remove_switch_rule: [32, 30]: 32
+*** r1.install_switch_rule: [33, [31]]: 33
+*** r1.install_switch_rule: [33, [31]]: 33
+*** r1.check_switch_rule: removing switch rule (33, 31): 33
+*** r1.remove_switch_rule: [33, 31]: 33
+*** r1.install_switch_rule: [34, [32]]: 34
+*** r1.install_switch_rule: [34, [32]]: 34
+*** r1.check_switch_rule: removing switch rule (34, 32): 34
+*** r1.remove_switch_rule: [34, 32]: 34
+*** r1.install_switch_rule: [35, [33]]: 35
+*** r1.install_switch_rule: [35, [33]]: 35
+*** r1.check_switch_rule: removing switch rule (35, 33): 35
+*** r1.remove_switch_rule: [35, 33]: 35
+*** r1.install_switch_rule: [36, [34]]: 36
+*** r1.install_switch_rule: [36, [34]]: 36
+*** r1.check_switch_rule: removing switch rule (36, 34): 36
+*** r1.remove_switch_rule: [36, 34]: 36
+*** r1.install_switch_rule: [37, [35]]: 37
+*** r1.install_switch_rule: [37, [35]]: 37
+*** r1.check_switch_rule: removing switch rule (37, 35): 37
+*** r1.remove_switch_rule: [37, 35]: 37
+*** r1.install_switch_rule: [38, [36]]: 38
+*** r1.install_switch_rule: [38, [36]]: 38
+*** r1.check_switch_rule: removing switch rule (38, 36): 38
+*** r1.remove_switch_rule: [38, 36]: 38
+*** r1.install_switch_rule: [39, [37]]: 39
+*** r1.install_switch_rule: [39, [37]]: 39
+*** r1.check_switch_rule: removing switch rule (39, 37): 39
+*** r1.remove_switch_rule: [39, 37]: 39
+*** r1.install_switch_rule: [40, [38]]: 40
+*** r1.install_switch_rule: [40, [38]]: 40
+*** r1.check_switch_rule: removing switch rule (40, 38): 40
+*** r1.remove_switch_rule: [40, 38]: 40
+*** r1.install_switch_rule: [41, [39]]: 41
+*** r1.install_switch_rule: [41, [39]]: 41
+*** r1.check_switch_rule: removing switch rule (41, 39): 41
+*** r1.remove_switch_rule: [41, 39]: 41
+*** r1.install_switch_rule: [42, [40]]: 42
+*** r1.install_switch_rule: [42, [40]]: 42
+*** r1.check_switch_rule: removing switch rule (42, 40): 42
+*** r1.remove_switch_rule: [42, 40]: 42
+*** r2.install_switch_rule: [43, [41]]: 43
+*** r2.install_switch_rule: [43, [41]]: 43
+*** r2.check_switch_rule: removing switch rule (43, 41): 43
+*** r2.remove_switch_rule: [43, 41]: 43
+*** r2.install_switch_rule: [44, [42]]: 44
+*** r2.install_switch_rule: [44, [42]]: 44
+*** r2.check_switch_rule: removing switch rule (44, 42): 44
+*** r2.remove_switch_rule: [44, 42]: 44
+*** r2.install_switch_rule: [45, [43]]: 45
+*** r2.install_switch_rule: [45, [43]]: 45
+*** r2.check_switch_rule: removing switch rule (45, 43): 45
+*** r2.remove_switch_rule: [45, 43]: 45
+*** r2.install_switch_rule: [46, [44]]: 46
+*** r2.install_switch_rule: [46, [44]]: 46
+*** r2.check_switch_rule: removing switch rule (46, 44): 46
+*** r2.remove_switch_rule: [46, 44]: 46
+*** r3.install_switch_rule: [47, [45]]: 47
+*** r3.install_switch_rule: [47, [45]]: 47
+*** r3.check_switch_rule: removing switch rule (47, 45): 47
+*** r3.remove_switch_rule: [47, 45]: 47
+*** r3.install_switch_rule: [48, [46]]: 48
+*** r3.install_switch_rule: [48, [46]]: 48
+*** r3.check_switch_rule: removing switch rule (48, 46): 48
+*** r3.remove_switch_rule: [48, 46]: 48
+*** r3.install_switch_rule: [49, [47]]: 49
+*** r3.install_switch_rule: [49, [47]]: 49
+*** r3.check_switch_rule: removing switch rule (49, 47): 49
+*** r3.remove_switch_rule: [49, 47]: 49
+*** r3.install_switch_rule: [50, [48]]: 50
+*** r3.install_switch_rule: [50, [48]]: 50
+*** r3.check_switch_rule: removing switch rule (50, 48): 50
+*** r3.remove_switch_rule: [50, 48]: 50
+*** r3.install_switch_rule: [51, [49]]: 51
+*** r3.install_switch_rule: [51, [49]]: 51
+*** r3.check_switch_rule: removing switch rule (51, 49): 51
+*** r3.remove_switch_rule: [51, 49]: 51
+*** r3.install_switch_rule: [52, [50]]: 52
+*** r3.install_switch_rule: [52, [50]]: 52
+*** r3.check_switch_rule: removing switch rule (52, 50): 52
+*** r3.remove_switch_rule: [52, 50]: 52
+*** r3.install_switch_rule: [53, [51]]: 53
+*** r3.install_switch_rule: [53, [51]]: 53
+*** r3.check_switch_rule: removing switch rule (53, 51): 53
+*** r3.remove_switch_rule: [53, 51]: 53
+*** r3.install_switch_rule: [54, [52]]: 54
+*** r3.install_switch_rule: [54, [52]]: 54
+*** r3.check_switch_rule: removing switch rule (54, 52): 54
+*** r3.remove_switch_rule: [54, 52]: 54
+*** r3.install_switch_rule: [55, [53]]: 55
+*** r3.install_switch_rule: [55, [53]]: 55
+*** r3.check_switch_rule: removing switch rule (55, 53): 55
+*** r3.remove_switch_rule: [55, 53]: 55
+*** r3.install_switch_rule: [56, [54]]: 56
+*** r3.install_switch_rule: [56, [54]]: 56
+*** r3.check_switch_rule: removing switch rule (56, 54): 56
+*** r3.remove_switch_rule: [56, 54]: 56
+*** r3.install_switch_rule: [57, [55]]: 57
+*** r3.install_switch_rule: [57, [55]]: 57
+*** r3.check_switch_rule: removing switch rule (57, 55): 57
+*** r3.remove_switch_rule: [57, 55]: 57
+*** r3.install_switch_rule: [58, [56]]: 58
+*** r3.install_switch_rule: [58, [56]]: 58
+*** r3.check_switch_rule: removing switch rule (58, 56): 58
+*** r3.remove_switch_rule: [58, 56]: 58
+*** r3.install_switch_rule: [59, [57]]: 59
+*** r3.install_switch_rule: [59, [57]]: 59
+*** r3.check_switch_rule: removing switch rule (59, 57): 59
+*** r3.remove_switch_rule: [59, 57]: 59
+*** r3.install_switch_rule: [60, [58]]: 60
+*** r3.install_switch_rule: [60, [58]]: 60
+*** r3.check_switch_rule: removing switch rule (60, 58): 60
+*** r3.remove_switch_rule: [60, 58]: 60
+*** r3.install_switch_rule: [61, [59]]: 61
+*** r3.install_switch_rule: [61, [59]]: 61
+*** r3.check_switch_rule: removing switch rule (61, 59): 61
+*** r3.remove_switch_rule: [61, 59]: 61
+*** r3.install_switch_rule: [62, [60]]: 62
+*** r3.install_switch_rule: [62, [60]]: 62
+*** r3.check_switch_rule: removing switch rule (62, 60): 62
+*** r3.remove_switch_rule: [62, 60]: 62
+*** r3.install_switch_rule: [63, [61]]: 63
+*** r3.install_switch_rule: [63, [61]]: 63
+*** r3.check_switch_rule: removing switch rule (63, 61): 63
+*** r3.remove_switch_rule: [63, 61]: 63
+*** r3.install_switch_rule: [64, [62]]: 64
+*** r3.install_switch_rule: [64, [62]]: 64
+*** r3.check_switch_rule: removing switch rule (64, 62): 64
+*** r3.remove_switch_rule: [64, 62]: 64
+*** r3.install_switch_rule: [65, [63]]: 65
+*** r3.install_switch_rule: [65, [63]]: 65
+*** r3.check_switch_rule: removing switch rule (65, 63): 65
+*** r3.remove_switch_rule: [65, 63]: 65
+*** r3.install_switch_rule: [66, [64]]: 66
+*** r3.install_switch_rule: [66, [64]]: 66
+*** r3.check_switch_rule: removing switch rule (66, 64): 66
+*** r3.remove_switch_rule: [66, 64]: 66
+*** r3.install_switch_rule: [67, [65]]: 67
+*** r3.install_switch_rule: [67, [65]]: 67
+*** r3.check_switch_rule: removing switch rule (67, 65): 67
+*** r3.remove_switch_rule: [67, 65]: 67
+*** r3.install_switch_rule: [68, [66]]: 68
+*** r3.install_switch_rule: [68, [66]]: 68
+*** r3.check_switch_rule: removing switch rule (68, 66): 68
+*** r3.remove_switch_rule: [68, 66]: 68
+*** r3.install_switch_rule: [69, [67]]: 69
+*** r3.install_switch_rule: [69, [67]]: 69
+*** r3.check_switch_rule: removing switch rule (69, 67): 69
+*** r3.remove_switch_rule: [69, 67]: 69
+*** r3.install_switch_rule: [70, [68]]: 70
+*** r3.install_switch_rule: [70, [68]]: 70
+*** r3.check_switch_rule: removing switch rule (70, 68): 70
+*** r3.remove_switch_rule: [70, 68]: 70
+*** r3.install_switch_rule: [71, [69]]: 71
+*** r3.install_switch_rule: [71, [69]]: 71
+*** r3.check_switch_rule: removing switch rule (71, 69): 71
+*** r3.remove_switch_rule: [71, 69]: 71
+*** r3.install_switch_rule: [72, [70]]: 72
+*** r3.install_switch_rule: [72, [70]]: 72
+*** r3.check_switch_rule: removing switch rule (72, 70): 72
+*** r3.remove_switch_rule: [72, 70]: 72
+*** r3.install_switch_rule: [73, [71]]: 73
+*** r3.install_switch_rule: [73, [71]]: 73
+*** r3.check_switch_rule: removing switch rule (73, 71): 73
+*** r3.remove_switch_rule: [73, 71]: 73
+*** r3.install_switch_rule: [74, [72]]: 74
+*** r3.install_switch_rule: [74, [72]]: 74
+*** r3.check_switch_rule: removing switch rule (74, 72): 74
+*** r3.remove_switch_rule: [74, 72]: 74
+*** r3.install_switch_rule: [75, [73]]: 75
+*** r3.install_switch_rule: [75, [73]]: 75
+*** r3.check_switch_rule: removing switch rule (75, 73): 75
+*** r3.remove_switch_rule: [75, 73]: 75
+*** r3.install_switch_rule: [76, [74]]: 76
+*** r3.install_switch_rule: [76, [74]]: 76
+*** r3.check_switch_rule: removing switch rule (76, 74): 76
+*** r3.remove_switch_rule: [76, 74]: 76
+*** r3.install_switch_rule: [77, [75]]: 77
+*** r3.install_switch_rule: [77, [75]]: 77
+*** r3.check_switch_rule: removing switch rule (77, 75): 77
+*** r3.remove_switch_rule: [77, 75]: 77
+*** r3.install_switch_rule: [78, [76]]: 78
+*** r3.install_switch_rule: [78, [76]]: 78
+*** r3.check_switch_rule: removing switch rule (78, 76): 78
+*** r3.remove_switch_rule: [78, 76]: 78
+*** r3.install_switch_rule: [79, [77]]: 79
+*** r3.install_switch_rule: [79, [77]]: 79
+*** r3.check_switch_rule: removing switch rule (79, 77): 79
+*** r3.remove_switch_rule: [79, 77]: 79
+*** r3.install_switch_rule: [80, [78]]: 80
+*** r3.install_switch_rule: [80, [78]]: 80
+*** r3.check_switch_rule: removing switch rule (80, 78): 80
+*** r3.remove_switch_rule: [80, 78]: 80
+*** r3.install_switch_rule: [81, [79]]: 81
+*** r3.install_switch_rule: [81, [79]]: 81
+*** r3.check_switch_rule: removing switch rule (81, 79): 81
+*** r3.remove_switch_rule: [81, 79]: 81
+*** r3.install_switch_rule: [82, [80]]: 82
+*** r3.install_switch_rule: [82, [80]]: 82
+*** r3.check_switch_rule: removing switch rule (82, 80): 82
+*** r3.remove_switch_rule: [82, 80]: 82
+*** r3.install_switch_rule: [83, [81]]: 83
+*** r3.install_switch_rule: [83, [81]]: 83
+*** r3.check_switch_rule: removing switch rule (83, 81): 83
+*** r3.remove_switch_rule: [83, 81]: 83
+*** r3.install_switch_rule: [84, [82]]: 84
+*** r3.install_switch_rule: [84, [82]]: 84
+*** r3.check_switch_rule: removing switch rule (84, 82): 84
+*** r3.remove_switch_rule: [84, 82]: 84
+*** r3.install_switch_rule: [85, [83]]: 85
+*** r3.install_switch_rule: [85, [83]]: 85
+*** r3.check_switch_rule: removing switch rule (85, 83): 85
+*** r3.remove_switch_rule: [85, 83]: 85
+*** r3.install_switch_rule: [86, [84]]: 86
+*** r3.install_switch_rule: [86, [84]]: 86
+*** r3.check_switch_rule: removing switch rule (86, 84): 86
+*** r3.remove_switch_rule: [86, 84]: 86
+*** r3.install_switch_rule: [87, [85]]: 87
+*** r3.install_switch_rule: [87, [85]]: 87
+*** r3.check_switch_rule: removing switch rule (87, 85): 87
+*** r3.remove_switch_rule: [87, 85]: 87
+*** r1.install_switch_rule: [300, [40]]: 300
+*** r1.install_switch_rule: [300, [40]]: 300
+*** r1.check_switch_rule: removing switch rule (300, 40): 300
+*** r1.remove_switch_rule: [300, 40]: 300
+*** r2.install_switch_rule: [310, [40]]: 310
+*** r2.install_switch_rule: [310, [40]]: 310
+*** r2.check_switch_rule: removing switch rule (310, 40): 310
+*** r2.remove_switch_rule: [310, 40]: 310
+*** r2.install_switch_rule: [400, [50]]: 400
+*** r2.install_switch_rule: [400, [50]]: 400
+*** r2.check_switch_rule: removing switch rule (400, 50): 400
+*** r2.remove_switch_rule: [400, 50]: 400
+*** r3.install_switch_rule: [410, [50]]: 410
+*** r3.install_switch_rule: [410, [50]]: 410
+*** r3.check_switch_rule: removing switch rule (410, 50): 410
+*** r3.remove_switch_rule: [410, 50]: 410
+*** t1.turn_on <ch1:191.35THz> on port 3
+*** t1 receiving <ch1:191.35THz> at port 3: Success! gOSNR: 23.315798 dB OSNR: 24.787531 dB
+*** t2.turn_on <ch2:191.40THz> on port 4
+*** t2 receiving <ch2:191.40THz> at port 4: Success! gOSNR: 23.314990 dB OSNR: 24.786396 dB
+*** t3.turn_on <ch3:191.45THz> on port 5
+*** t3 receiving <ch3:191.45THz> at port 5: Success! gOSNR: 23.314181 dB OSNR: 24.785262 dB
+*** t4.turn_on <ch4:191.50THz> on port 6
+*** t4 receiving <ch4:191.50THz> at port 6: Success! gOSNR: 23.313373 dB OSNR: 24.784128 dB
+*** t5.turn_on <ch5:191.55THz> on port 7
+*** t5 receiving <ch5:191.55THz> at port 7: Success! gOSNR: 23.312565 dB OSNR: 24.782994 dB
+*** t6.turn_on <ch6:191.60THz> on port 8
+*** t6 receiving <ch6:191.60THz> at port 8: Success! gOSNR: 23.311757 dB OSNR: 24.781860 dB
+*** t7.turn_on <ch7:191.65THz> on port 9
+*** t7 receiving <ch7:191.65THz> at port 9: Success! gOSNR: 23.310949 dB OSNR: 24.780727 dB
+*** t8.turn_on <ch8:191.70THz> on port 10
+*** t8 receiving <ch8:191.70THz> at port 10: Success! gOSNR: 23.310141 dB OSNR: 24.779594 dB
+*** t9.turn_on <ch9:191.75THz> on port 11
+*** t9 receiving <ch9:191.75THz> at port 11: Success! gOSNR: 23.309334 dB OSNR: 24.778462 dB
+*** t10.turn_on <ch10:191.80THz> on port 12
+*** t10 receiving <ch10:191.80THz> at port 12: Success! gOSNR: 23.308526 dB OSNR: 24.777329 dB
+*** t11.turn_on <ch11:191.85THz> on port 13
+*** t11 receiving <ch11:191.85THz> at port 13: Success! gOSNR: 23.307719 dB OSNR: 24.776197 dB
+*** t12.turn_on <ch12:191.90THz> on port 14
+*** t12 receiving <ch12:191.90THz> at port 14: Success! gOSNR: 23.306912 dB OSNR: 24.775066 dB
+*** t13.turn_on <ch13:191.95THz> on port 15
+*** t13 receiving <ch13:191.95THz> at port 15: Success! gOSNR: 23.306105 dB OSNR: 24.773934 dB
+*** t14.turn_on <ch14:192.00THz> on port 16
+*** t14 receiving <ch14:192.00THz> at port 16: Success! gOSNR: 23.305298 dB OSNR: 24.772803 dB
+*** t15.turn_on <ch15:192.05THz> on port 17
+*** t15 receiving <ch15:192.05THz> at port 17: Success! gOSNR: 23.304492 dB OSNR: 24.771672 dB
+*** t16.turn_on <ch16:192.10THz> on port 18
+*** t16 receiving <ch16:192.10THz> at port 18: Success! gOSNR: 23.303685 dB OSNR: 24.770542 dB
+*** t17.turn_on <ch17:192.15THz> on port 19
+*** t17 receiving <ch17:192.15THz> at port 19: Success! gOSNR: 23.302879 dB OSNR: 24.769411 dB
+*** t18.turn_on <ch18:192.20THz> on port 20
+*** t18 receiving <ch18:192.20THz> at port 20: Success! gOSNR: 23.302073 dB OSNR: 24.768281 dB
+*** t19.turn_on <ch19:192.25THz> on port 21
+*** t19 receiving <ch19:192.25THz> at port 21: Success! gOSNR: 23.301267 dB OSNR: 24.767152 dB
+*** t20.turn_on <ch20:192.30THz> on port 22
+*** t20 receiving <ch20:192.30THz> at port 22: Success! gOSNR: 23.300461 dB OSNR: 24.766022 dB
+*** t21.turn_on <ch21:192.35THz> on port 23
+*** t21 receiving <ch21:192.35THz> at port 23: Success! gOSNR: 23.299655 dB OSNR: 24.764893 dB
+*** t22.turn_on <ch22:192.40THz> on port 24
+*** t22 receiving <ch22:192.40THz> at port 24: Success! gOSNR: 23.298849 dB OSNR: 24.763764 dB
+*** t23.turn_on <ch23:192.45THz> on port 25
+*** t23 receiving <ch23:192.45THz> at port 25: Success! gOSNR: 23.298044 dB OSNR: 24.762636 dB
+*** t24.turn_on <ch24:192.50THz> on port 26
+*** t24 receiving <ch24:192.50THz> at port 26: Success! gOSNR: 23.297239 dB OSNR: 24.761508 dB
+*** t25.turn_on <ch25:192.55THz> on port 27
+*** t25 receiving <ch25:192.55THz> at port 27: Success! gOSNR: 23.296434 dB OSNR: 24.760380 dB
+*** t26.turn_on <ch26:192.60THz> on port 28
+*** t26 receiving <ch26:192.60THz> at port 28: Success! gOSNR: 23.295629 dB OSNR: 24.759252 dB
+*** t27.turn_on <ch27:192.65THz> on port 29
+*** t27 receiving <ch27:192.65THz> at port 29: Success! gOSNR: 23.294824 dB OSNR: 24.758125 dB
+*** t28.turn_on <ch28:192.70THz> on port 30
+*** t28 receiving <ch28:192.70THz> at port 30: Success! gOSNR: 23.294019 dB OSNR: 24.756998 dB
+*** t29.turn_on <ch29:192.75THz> on port 31
+*** t29 receiving <ch29:192.75THz> at port 31: Success! gOSNR: 23.293215 dB OSNR: 24.755871 dB
+*** t30.turn_on <ch30:192.80THz> on port 32
+*** t30 receiving <ch30:192.80THz> at port 32: Success! gOSNR: 23.292410 dB OSNR: 24.754744 dB
+*** t31.turn_on <ch31:192.85THz> on port 33
+*** t31 receiving <ch31:192.85THz> at port 33: Success! gOSNR: 23.291606 dB OSNR: 24.753618 dB
+*** t32.turn_on <ch32:192.90THz> on port 34
+*** t32 receiving <ch32:192.90THz> at port 34: Success! gOSNR: 23.290802 dB OSNR: 24.752492 dB
+*** t33.turn_on <ch33:192.95THz> on port 35
+*** t33 receiving <ch33:192.95THz> at port 35: Success! gOSNR: 23.289998 dB OSNR: 24.751367 dB
+*** t34.turn_on <ch34:193.00THz> on port 36
+*** t34 receiving <ch34:193.00THz> at port 36: Success! gOSNR: 23.289194 dB OSNR: 24.750242 dB
+*** t35.turn_on <ch35:193.05THz> on port 37
+*** t35 receiving <ch35:193.05THz> at port 37: Success! gOSNR: 23.288390 dB OSNR: 24.749117 dB
+*** t36.turn_on <ch36:193.10THz> on port 38
+*** t36 receiving <ch36:193.10THz> at port 38: Success! gOSNR: 23.287587 dB OSNR: 24.747992 dB
+*** t37.turn_on <ch37:193.15THz> on port 39
+*** t37 receiving <ch37:193.15THz> at port 39: Success! gOSNR: 23.286784 dB OSNR: 24.746867 dB
+*** t38.turn_on <ch38:193.20THz> on port 40
+*** t38 receiving <ch38:193.20THz> at port 40: Success! gOSNR: 23.285980 dB OSNR: 24.745743 dB
+*** t39.turn_on <ch39:193.25THz> on port 41
+*** t39 receiving <ch39:193.25THz> at port 41: Success! gOSNR: 23.285177 dB OSNR: 24.744619 dB
+*** t40.turn_on <ch40:193.30THz> on port 42
+*** t40 receiving <ch40:193.30THz> at port 42: Success! gOSNR: 23.284374 dB OSNR: 24.743496 dB
+*** t41.turn_on <ch41:193.35THz> on port 43
+*** t41 receiving <ch41:193.35THz> at port 43: Success! gOSNR: 23.283572 dB OSNR: 24.742373 dB
+*** t42.turn_on <ch42:193.40THz> on port 44
+*** t42 receiving <ch42:193.40THz> at port 44: Success! gOSNR: 23.282769 dB OSNR: 24.741250 dB
+*** t43.turn_on <ch43:193.45THz> on port 45
+*** t43 receiving <ch43:193.45THz> at port 45: Success! gOSNR: 23.281967 dB OSNR: 24.740127 dB
+*** t44.turn_on <ch44:193.50THz> on port 46
+*** t44 receiving <ch44:193.50THz> at port 46: Success! gOSNR: 23.281164 dB OSNR: 24.739005 dB
+*** t45.turn_on <ch45:193.55THz> on port 47
+*** t45 receiving <ch45:193.55THz> at port 47: Success! gOSNR: 23.280362 dB OSNR: 24.737883 dB
+*** t46.turn_on <ch46:193.60THz> on port 48
+*** t46 receiving <ch46:193.60THz> at port 48: Success! gOSNR: 23.279560 dB OSNR: 24.736761 dB
+*** t47.turn_on <ch47:193.65THz> on port 49
+*** t47 receiving <ch47:193.65THz> at port 49: Success! gOSNR: 23.278758 dB OSNR: 24.735639 dB
+*** t48.turn_on <ch48:193.70THz> on port 50
+*** t48 receiving <ch48:193.70THz> at port 50: Success! gOSNR: 23.277957 dB OSNR: 24.734518 dB
+*** t49.turn_on <ch49:193.75THz> on port 51
+*** t49 receiving <ch49:193.75THz> at port 51: Success! gOSNR: 23.277155 dB OSNR: 24.733397 dB
+*** t50.turn_on <ch50:193.80THz> on port 52
+*** t50 receiving <ch50:193.80THz> at port 52: Success! gOSNR: 23.276354 dB OSNR: 24.732276 dB
+*** t51.turn_on <ch51:193.85THz> on port 53
+*** t51 receiving <ch51:193.85THz> at port 53: Success! gOSNR: 23.275552 dB OSNR: 24.731156 dB
+*** t52.turn_on <ch52:193.90THz> on port 54
+*** t52 receiving <ch52:193.90THz> at port 54: Success! gOSNR: 23.274751 dB OSNR: 24.730036 dB
+*** t53.turn_on <ch53:193.95THz> on port 55
+*** t53 receiving <ch53:193.95THz> at port 55: Success! gOSNR: 23.273950 dB OSNR: 24.728916 dB
+*** t54.turn_on <ch54:194.00THz> on port 56
+*** t54 receiving <ch54:194.00THz> at port 56: Success! gOSNR: 23.273149 dB OSNR: 24.727797 dB
+*** t55.turn_on <ch55:194.05THz> on port 57
+*** t55 receiving <ch55:194.05THz> at port 57: Success! gOSNR: 23.272349 dB OSNR: 24.726677 dB
+*** t56.turn_on <ch56:194.10THz> on port 58
+*** t56 receiving <ch56:194.10THz> at port 58: Success! gOSNR: 23.271548 dB OSNR: 24.725559 dB
+*** t57.turn_on <ch57:194.15THz> on port 59
+*** t57 receiving <ch57:194.15THz> at port 59: Success! gOSNR: 23.270748 dB OSNR: 24.724440 dB
+*** t58.turn_on <ch58:194.20THz> on port 60
+*** t58 receiving <ch58:194.20THz> at port 60: Success! gOSNR: 23.269947 dB OSNR: 24.723322 dB
+*** t59.turn_on <ch59:194.25THz> on port 61
+*** t59 receiving <ch59:194.25THz> at port 61: Success! gOSNR: 23.269147 dB OSNR: 24.722204 dB
+*** t60.turn_on <ch60:194.30THz> on port 62
+*** t60 receiving <ch60:194.30THz> at port 62: Success! gOSNR: 23.268347 dB OSNR: 24.721086 dB
+*** t61.turn_on <ch61:194.35THz> on port 63
+*** t61 receiving <ch61:194.35THz> at port 63: Success! gOSNR: 23.267548 dB OSNR: 24.719968 dB
+*** t62.turn_on <ch62:194.40THz> on port 64
+*** t62 receiving <ch62:194.40THz> at port 64: Success! gOSNR: 23.266748 dB OSNR: 24.718851 dB
+*** t63.turn_on <ch63:194.45THz> on port 65
+*** t63 receiving <ch63:194.45THz> at port 65: Success! gOSNR: 23.265949 dB OSNR: 24.717734 dB
+*** t64.turn_on <ch64:194.50THz> on port 66
+*** t64 receiving <ch64:194.50THz> at port 66: Success! gOSNR: 23.265149 dB OSNR: 24.716618 dB
+*** t65.turn_on <ch65:194.55THz> on port 67
+*** t65 receiving <ch65:194.55THz> at port 67: Success! gOSNR: 23.264350 dB OSNR: 24.715501 dB
+*** t66.turn_on <ch66:194.60THz> on port 68
+*** t66 receiving <ch66:194.60THz> at port 68: Success! gOSNR: 23.263551 dB OSNR: 24.714385 dB
+*** t67.turn_on <ch67:194.65THz> on port 69
+*** t67 receiving <ch67:194.65THz> at port 69: Success! gOSNR: 23.262752 dB OSNR: 24.713269 dB
+*** t68.turn_on <ch68:194.70THz> on port 70
+*** t68 receiving <ch68:194.70THz> at port 70: Success! gOSNR: 23.261953 dB OSNR: 24.712154 dB
+*** t69.turn_on <ch69:194.75THz> on port 71
+*** t69 receiving <ch69:194.75THz> at port 71: Success! gOSNR: 23.261155 dB OSNR: 24.711039 dB
+*** t70.turn_on <ch70:194.80THz> on port 72
+*** t70 receiving <ch70:194.80THz> at port 72: Success! gOSNR: 23.260356 dB OSNR: 24.709924 dB
+*** t71.turn_on <ch71:194.85THz> on port 73
+*** t71 receiving <ch71:194.85THz> at port 73: Success! gOSNR: 23.259558 dB OSNR: 24.708809 dB
+*** t72.turn_on <ch72:194.90THz> on port 74
+*** t72 receiving <ch72:194.90THz> at port 74: Success! gOSNR: 23.258760 dB OSNR: 24.707695 dB
+*** t73.turn_on <ch73:194.95THz> on port 75
+*** t73 receiving <ch73:194.95THz> at port 75: Success! gOSNR: 23.257962 dB OSNR: 24.706581 dB
+*** t74.turn_on <ch74:195.00THz> on port 76
+*** t74 receiving <ch74:195.00THz> at port 76: Success! gOSNR: 23.257164 dB OSNR: 24.705467 dB
+*** t75.turn_on <ch75:195.05THz> on port 77
+*** t75 receiving <ch75:195.05THz> at port 77: Success! gOSNR: 23.256366 dB OSNR: 24.704354 dB
+*** t76.turn_on <ch76:195.10THz> on port 78
+*** t76 receiving <ch76:195.10THz> at port 78: Success! gOSNR: 23.255568 dB OSNR: 24.703241 dB
+*** t77.turn_on <ch77:195.15THz> on port 79
+*** t77 receiving <ch77:195.15THz> at port 79: Success! gOSNR: 23.254771 dB OSNR: 24.702128 dB
+*** t78.turn_on <ch78:195.20THz> on port 80
+*** t78 receiving <ch78:195.20THz> at port 80: Success! gOSNR: 23.253974 dB OSNR: 24.701015 dB
+*** t79.turn_on <ch79:195.25THz> on port 81
+*** t79 receiving <ch79:195.25THz> at port 81: Success! gOSNR: 23.253176 dB OSNR: 24.699903 dB
+*** t80.turn_on <ch80:195.30THz> on port 82
+*** t80 receiving <ch80:195.30THz> at port 82: Success! gOSNR: 23.252379 dB OSNR: 24.698791 dB
+*** t81.turn_on <ch81:195.35THz> on port 83
+*** t81 receiving <ch81:195.35THz> at port 83: Success! gOSNR: 23.251583 dB OSNR: 24.697679 dB
+*** t82.turn_on <ch82:195.40THz> on port 84
+*** t82 receiving <ch82:195.40THz> at port 84: Success! gOSNR: 23.250786 dB OSNR: 24.696567 dB
+*** t83.turn_on <ch83:195.45THz> on port 85
+*** t83 receiving <ch83:195.45THz> at port 85: Success! gOSNR: 23.249989 dB OSNR: 24.695456 dB
+*** t84.turn_on <ch84:195.50THz> on port 86
+*** t84 receiving <ch84:195.50THz> at port 86: Success! gOSNR: 23.249193 dB OSNR: 24.694345 dB
+*** t85.turn_on <ch85:195.55THz> on port 87
+*** t85 receiving <ch85:195.55THz> at port 87: Success! gOSNR: 23.248397 dB OSNR: 24.693235 dB

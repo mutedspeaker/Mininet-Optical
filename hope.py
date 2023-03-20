@@ -132,9 +132,9 @@ class SingleROADMTopo(Topo):
         
         # Wdm Links:
         boost = ('boost', {'target_gain': 3.0*dB})
-        amp1 = ('amp1', {'target_gain': 25*.22*dB})
-        amp2 = ('amp2', {'target_gain': 25*.22*dB})
-        spans = [25*km, amp1, 25*km, amp2]
+        amp1 = ('amp1', {'target_gain': 70*.22*dB})
+        amp2 = ('amp2', {'target_gain': 70*.22*dB})
+        spans = [70*km, amp1, 70*km, amp2]
         
         
         # Add links
@@ -231,7 +231,7 @@ def test(net):
 
 if __name__ == '__main__':
 
-    for j in range(16, 20):
+    for j in range(85, 90):
 	    total_terminals = j
 	    customer_channels = 4
 	    channel_multiplier = 90 // total_terminals
@@ -269,4 +269,5 @@ if __name__ == '__main__':
 	    
 	    restServer.stop()
 	    net.stop()
+	    break
 	    
