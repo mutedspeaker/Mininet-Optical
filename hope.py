@@ -134,13 +134,24 @@ class SingleROADMTopo(Topo):
         
         r1, r2, r3 = [self.addSwitch(f'r{i}', cls=ROADM ) for i in range(1, 4)]
         
+	'''
         # Wdm Links:
         boost = ('boost', {'target_gain': 9.0*dB})
         amp1 = ('amp1', {'target_gain': 10*.22*dB})
         amp2 = ('amp2', {'target_gain': 10*.22*dB})
         spans1 = [10*km, amp1, 10*km, amp2, 10*km, amp1, 10*km, amp2, 10*km, amp1, 10*km, amp2]
         spans2 = [10*km, amp1, 10*km, amp2]
-        l = [spans1, spans2]
+        l = [spans1, spans2]'''
+	
+	# Wdm Links:
+	boost = ('boost', {'target_gain': 20.0dB})
+	amp1 = ('amp1', {'target_gain': 15.0dB})
+	amp2 = ('amp2', {'target_gain': 20.0dB})
+	amp3 = ('amp3', {'target_gain': 15.0dB})
+	amp4 = ('amp4', {'target_gain': 20.0dB})
+	spans1 = [10*km, amp1, 10*km, amp1, 10*km, amp2, 10*km, amp3, 10*km, amp4, 10*km, amp1, 10*km, amp2, 10*km, amp3, 10*km, amp4, 10*km, amp1, 10*km, amp2, 10*km, amp3]
+	spans2 = [10*km, amp1, 10*km, amp2, 10*km, amp3, 10*km, amp4, 10*km, amp1, 10*km, amp2, 10*km, amp3, 10*km, amp4, 10*km, amp1, 10*km, amp2, 10*km, amp3, 10*km, amp4]
+
         
         # Add links
         for src, dst in [(h1, s1), (h2, s2), (h3, s3)]:
