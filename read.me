@@ -1,0 +1,19 @@
+The target is to look at Optical spectrum as a service. The idea is to predict the behaviour of channels working on a given bandwidth slot, based on information you can collect from other bands. The outcome will be to come up with a method for calculating average and max expected error based on different overall fibre loads as well as near channel allocations.
+
+First you will examine how external channels will affect channels in your band, then how your channels would affect external channels.
+
+ 
+
+And plan:
+
+Create a topology in mn-optical.
+
+Consider a certain spectral window and the rest as separate entities.
+
+Analyse how the signals in the window are affected by changing load dynamically outside.
+
+Come up with a strategy for load analysis: start from channels near window first then move away progressively, vs. Random, vs. Mixed strategy.
+
+Also try with different amp profile.
+
+Goal is to understand best strategy for achieving this. Could use ML as a learning tool.
