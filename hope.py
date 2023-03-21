@@ -25,6 +25,10 @@ import os
 import stat
 import sys
 
+import random
+
+def random_value(l):
+	return random.choice(l)
 def end():
     foo=raw_input()
     sys.exit()		
@@ -131,12 +135,12 @@ class SingleROADMTopo(Topo):
         r1, r2, r3 = [self.addSwitch(f'r{i}', cls=ROADM ) for i in range(1, 4)]
         
         # Wdm Links:
-        boost = ('boost', {'target_gain': 18.0*dB})
+        boost = ('boost', {'target_gain': 9.0*dB})
         amp1 = ('amp1', {'target_gain': 10*.22*dB})
         amp2 = ('amp2', {'target_gain': 10*.22*dB})
         spans1 = [10*km, amp1, 10*km, amp2, 10*km, amp1, 10*km, amp2, 10*km, amp1, 10*km, amp2]
         spans2 = [10*km, amp1, 10*km, amp2]
-        
+        l = [spans1, spans2]
         
         # Add links
         for src, dst in [(h1, s1), (h2, s2), (h3, s3)]:
@@ -157,13 +161,13 @@ class SingleROADMTopo(Topo):
 
         # Connections between routers and terminals
         for i in range(n//2 - z//2):
-            self.addLink(r1, t_vars[i], cls=OpticalLink, port1=i+3, port2=i+3, boost1=boost, spans=spans1)
+            self.addLink(r1, t_vars[i], cls=OpticalLink, port1=i+3, port2=i+3, boost1=boost, spans=random_value(l))
 
         for i in range(n //2 - z//2, n//2 + z//2):
-            self.addLink(r2, t_vars[i], cls=OpticalLink, port1=i+3, port2=i+3, boost1=boost, spans=spans2)
+            self.addLink(r2, t_vars[i], cls=OpticalLink, port1=i+3, port2=i+3, boost1=boost, spans=random_value(l))
 
         for i in range(n//2 + z//2, n):
-            self.addLink(r3, t_vars[i], cls=OpticalLink, port1=i+3, port2=i+3,  boost1=boost, spans=spans1)
+            self.addLink(r3, t_vars[i], cls=OpticalLink, port1=i+3, port2=i+3,  boost1=boost, spans=random_value(l))
 
         # Adding links between r1 and r2
         self.addLink(r1, r2, cls=OpticalLink, port1=300, port2=300, boost1=boost, spans=spans1)
@@ -232,7 +236,7 @@ def test(net):
 
 if __name__ == '__main__':
 
-    for j in range(44, 45):
+    for j in range(45, 46):
 	    total_terminals = j
 	    customer_channels = 4
 	    channel_multiplier = 90 // total_terminals
