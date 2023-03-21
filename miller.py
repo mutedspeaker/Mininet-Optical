@@ -39,7 +39,8 @@ print(f'Mean Squared Error: {mse:.4f}')
 print(f'Accuracy: {accuracy:.2f}%')
 
 # Visualize the accuracy of the model with a graph
-train_sizes = [0.1, 0.3, 0.5, 0.7, 0.9]
+# train_sizes = [0.1, 0.3, 0.5, 0.7, 0.9]
+train_sizes = [0.1, 0.3, 0.6]
 train_errors = []
 test_errors = []
 for size in train_sizes:
