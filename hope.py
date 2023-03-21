@@ -149,10 +149,10 @@ class SingleROADMTopo(Topo):
         amp2 = ('amp2', {'target_gain': 20*.22*dB})
         amp3 = ('amp3', {'target_gain': 15*.22*dB})
         amp4 = ('amp4', {'target_gain': 20*.22*dB})
-        spans1 = [10*km, amp1, 10*km, amp1, 10*km, amp2, 10*km]
-        spans2 = [10*km, amp2, 10*km, amp2, 10*km, amp3, 10*km, 10*km, amp3, 10*km]
-        spans3 = [10*km, amp1, 10*km, amp1, 10*km, amp3, 10*km, 10*km, amp2, 10*km]
-        spans4 = [10*km, amp3, 10*km, amp2, 10*km, amp2, 10*km, 10*km, amp1, 10*km]
+        spans1 = [10*km, amp1, 10*km, amp1, 20*km, amp2, 15*km, amp3]
+        spans2 = [20*km, amp2, 20*km, amp2, 15*km, amp3, 10*km, amp3, 10*km, amp1]
+        spans3 = [10*km, amp1, 10*km, amp1, 15*km, amp3, 20*km, amp2, 20*km, amp2]
+        spans4 = [15*km, amp3, 20*km, amp2, 20*km, amp2, 10*km, amp1, 15*km, amp3]
         l = [spans1, spans2, spans3, spans4]
         spans = random_value(l)
 
@@ -251,7 +251,7 @@ def test(net):
 
 if __name__ == '__main__':
 
-    for j in range(10, 46):
+    for j in range(10, 20):
 	    total_terminals = j
 	    customer_channels = 4
 	    channel_multiplier = 90 // total_terminals
