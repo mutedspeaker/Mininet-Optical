@@ -134,7 +134,8 @@ class SingleROADMTopo(Topo):
         boost = ('boost', {'target_gain': 18.0*dB})
         amp1 = ('amp1', {'target_gain': 10*.22*dB})
         amp2 = ('amp2', {'target_gain': 10*.22*dB})
-        spans = [10*km, amp1, 10*km, amp2, 10*km, amp1, 10*km, amp2, 10*km, amp1, 10*km, amp2]
+        spans1 = [10*km, amp1, 10*km, amp2, 10*km, amp1, 10*km, amp2, 10*km, amp1, 10*km, amp2]
+        spans2 = [10*km, amp1, 10*km, amp2]
         
         
         # Add links
@@ -156,21 +157,21 @@ class SingleROADMTopo(Topo):
 
         # Connections between routers and terminals
         for i in range(n//2 - z//2):
-            self.addLink(r1, t_vars[i], cls=OpticalLink, port1=i+3, port2=i+3, boost1=boost, spans=spans)
+            self.addLink(r1, t_vars[i], cls=OpticalLink, port1=i+3, port2=i+3, boost1=boost, spans=spans1)
 
         for i in range(n //2 - z//2, n//2 + z//2):
-            self.addLink(r2, t_vars[i], cls=OpticalLink, port1=i+3, port2=i+3, boost1=boost, spans=spans)
+            self.addLink(r2, t_vars[i], cls=OpticalLink, port1=i+3, port2=i+3, boost1=boost, spans=spans2)
 
         for i in range(n//2 + z//2, n):
-            self.addLink(r3, t_vars[i], cls=OpticalLink, port1=i+3, port2=i+3, boost1=boost, spans=spans)
+            self.addLink(r3, t_vars[i], cls=OpticalLink, port1=i+3, port2=i+3,  boost1=boost, spans=spans1)
 
         # Adding links between r1 and r2
-        self.addLink(r1, r2, cls=OpticalLink, port1=300, port2=300, boost1=boost, spans=spans)
-        self.addLink(r2, r1, cls=OpticalLink, port1=310, port2=310, boost1=boost, spans=spans)
+        self.addLink(r1, r2, cls=OpticalLink, port1=300, port2=300, boost1=boost, spans=spans1)
+        self.addLink(r2, r1, cls=OpticalLink, port1=310, port2=310, boost1=boost, spans=spans1)
     
         # Adding links between r2 and r3
-        self.addLink(r2, r3, cls=OpticalLink, port1=400, port2=400, boost1=boost, spans=spans)
-        self.addLink(r3, r2, cls=OpticalLink, port1=410, port2=410, boost1=boost, spans=spans)
+        self.addLink(r2, r3, cls=OpticalLink, port1=400, port2=400, boost1=boost, spans=spans1)
+        self.addLink(r3, r2, cls=OpticalLink, port1=410, port2=410, boost1=boost, spans=spans1)
 	
 # Debugging: Plot network graph
 def plotNet(net, outfile="gConfignRoadms.png", directed=False, layout='circo',
@@ -231,7 +232,7 @@ def test(net):
 
 if __name__ == '__main__':
 
-    for j in range(38, 43):
+    for j in range(44, 45):
 	    total_terminals = j
 	    customer_channels = 4
 	    channel_multiplier = 90 // total_terminals
