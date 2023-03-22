@@ -3,4 +3,4 @@ rm output.txt
 sudo rm bash.sh
 sudo rm gConfignRoadms.png
 python3 miller.py
-rm final.txt
+final.txt
