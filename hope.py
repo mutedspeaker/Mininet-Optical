@@ -251,7 +251,7 @@ def test(net):
 
 if __name__ == '__main__':
 
-    for j in range(60, 70):
+    for j in range(70, 80):
 	    total_terminals = j
 	    customer_channels = 4
 	    channel_multiplier = 90 // total_terminals
