@@ -123,26 +123,11 @@ def bash_creator(a):
 class SingleROADMTopo(Topo):
     def build(self):
         h1, h2, h3= [self.addHost(f'h{i}') for i in range(1, 4)]
-        
         s1, s2, s3 = [self.addSwitch(f's{i}') for i in range(1, 4)]
-
         t_vars = [f"t{i}" for i in range(1, n+1)]
-
-        # Use a list comprehension to create the switches and assign them to the t_vars:
-        
         t_vars = [self.addSwitch(t_var, cls=Terminal, transceivers=[('tx1', 0*dBm, 'C')], monitor_mode='in') for t_var in t_vars]
-        
         r1, r2, r3 = [self.addSwitch(f'r{i}', cls=ROADM ) for i in range(1, 4)]
-        
-        '''
-        # Wdm Links:
-        boost = ('boost', {'target_gain': 9.0*dB})
-        amp1 = ('amp1', {'target_gain': 10*.22*dB})
-        amp2 = ('amp2', {'target_gain': 10*.22*dB})
-        spans1 = [10*km, amp1, 10*km, amp2, 10*km, amp1, 10*km, amp2, 10*km, amp1, 10*km, amp2]
-        spans2 = [10*km, amp1, 10*km, amp2]
-        l = [spans1, spans2]'''
-	
+
 	# Wdm Links:
         boost = ('boost', {'target_gain': 10.0*dB})
         amp1 = ('amp1', {'target_gain': 10*.22*dB})
